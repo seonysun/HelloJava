@@ -69,9 +69,9 @@ public class 단일조건문 {
 		
 		//가위바위보 게임
 		int com = (int)(Math.random()*3);
-		Scanner sc = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
 		System.out.print("가위:0 바위:1 보:2 ->");
-		int user = sc.nextInt(); 
+		int user = scan.nextInt(); 
 		
 		if(com==0) System.out.println("컴퓨터: 가위");
 		if(com==1) System.out.println("컴퓨터: 바위");
@@ -83,7 +83,6 @@ public class 단일조건문 {
 		
 		
 		//학점 판단
-		Scanner scan = new Scanner(System.in);
 		System.out.println("국어 영어 수학:");
 		int kor = scan.nextInt();
 		int eng = scan.nextInt();

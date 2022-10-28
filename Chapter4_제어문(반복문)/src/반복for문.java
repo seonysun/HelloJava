@@ -103,7 +103,6 @@ public class 반복for문 {
 				System.exit(0);
 			}
 		}
-			//???????? 이거 아래에 변수 만들면 오류남 unreachable code... 무한루프 때문인 것 같은데 이유를 모르겠???
 		
 	}
 
