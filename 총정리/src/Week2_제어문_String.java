@@ -15,14 +15,51 @@ public class Week2_제어문_String {
 	public static void main(String[] args) {
 		//문자열
 		String s = "Hello Java";
-		System.out.println(s.length());
-		System.out.println(s.charAt(9));
+		System.out.println("문장의 길이:"+s.length());
+										//공백도 문자 1에 해당
+		System.out.println("9번째 문자:"+s.charAt(9));
+										//첫번째 문자 : 0번
 		
 		for(int i=s.length()-1;i>=0;i--) {
 			char c = s.charAt(i);
+						//첫번째 문자가 0번이므로 마지막 문자는 (총길이-1)번째 문자 -> length-1
 			System.out.println(i+":"+c);
 		}
-
+		System.out.println();
+		
+		
+		//2진법 출력
+		int num = (int)(Math.random()*101);
+		int num2 = num; //아래 for문에 사용하기 위해 초기화
+		System.out.println("num="+num);
+		System.out.println(Integer.toBinaryString(num));
+									//2진법으로 바꾸는 메소드
+		System.out.println("==2진법 출력== while");
+		String result="";
+		while(true) {
+			int a=num%2;
+			result+=a;
+			num=num/2;
+			if(num==0) break;
+		}
+		for(int i=result.length()-1;i>=0;i--)
+				//2진법은 뒤에서부터 출력해야 함
+			System.out.print(result.charAt(i));
+		System.out.println();
+		
+		System.out.println("==2진법 출력== for");
+			//위의 for문에서 result값(2진법 나누기 결과)과 num값(0)이 변경되었으므로 다시 초기화 필요
+		result="";
+		for(;;) {
+			int a=num2%2;
+			result+=a;
+			num2=num2/2;
+			if(num2==0) break;
+		}
+		for(int i=result.length()-1;i>=0;i--)
+			System.out.print(result.charAt(i));
+		System.out.println();
+		
 		
 		//로그인처리
 		Scanner scan = new Scanner(System.in);
