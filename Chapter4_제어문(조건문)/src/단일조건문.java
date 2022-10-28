@@ -46,6 +46,7 @@ import java.util.Scanner;
  * 												수행문장 1
  * 												수행문장 2 }
  * 											-> 조건 true : 수행문장 1+2, false : 수행문장 없음
+ * 		- 검색, 로그인, 아이디중복, 우편번호 검색, 상세보기 등
  * */		
 
 public class 단일조건문 {
