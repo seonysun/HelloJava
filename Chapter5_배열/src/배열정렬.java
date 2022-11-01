@@ -12,7 +12,7 @@ public class 배열정렬 {
 		System.out.println(Arrays.toString(arr));
 		
 		for(int i=0;i<arr.length-1;i++) { //마지막 배열 요소는 앞에서 이미 비교했으므로 중복되어 제외
-			for(int j=i+1;j<arr.length;j++) { //이전 배열 요소는 이미 비교 완료이고 각 배열 요소를 스스로 비교할 필요는 없으므로 i+1부터 시작
+			for(int j=i+1;j<arr.length;j++) { //앞쪽 배열 요소는 비교 완료되어 고정되었으므로 +i, 각 배열 요소를 스스로 비교할 필요는 없으므로 +1
 				if(arr[i]>arr[j]) { //i번째가 j번째보다 크면 둘 교환
 					int temp = arr[i];
 					arr[i] = arr[j];
@@ -56,7 +56,7 @@ public class 배열정렬 {
 		System.out.println(Arrays.toString(arr1));
 		
 		for(int i=0;i<arr1.length-1;i++) {
-			for(int j=0;j<arr1.length-1-i;j++) {
+			for(int j=0;j<arr1.length-1-i;j++) { //j번째와 j+1번째를 비교하므로 -1, 뒷쪽 배열 요소는 비교 완료되어 고정되었으므로 -i
 					if(arr1[j]>arr1[j+1]) {
 						int temp = arr1[j];
 						arr1[j] = arr1[j+1];
