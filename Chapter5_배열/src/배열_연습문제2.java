@@ -114,10 +114,6 @@ public class 배열_연습문제2 {
 			total[i]=kor[i]+eng[i]+math[i];
 			avg[i]=total[i]/3.0;
 		}
-		for(int i=0;i<3;i++) {
-			System.out.printf("%d번째 학생 점수(국,영,수):%d,%d,%d%n",i+1,kor[i],eng[i],math[i]);
-			System.out.printf("총점:%d, 평균:%.2f%n", total[i],avg[i]);
-		}
 
 		for(int i=0;i<3;i++) {
 			rank[i]=1;
@@ -128,9 +124,8 @@ public class 배열_연습문제2 {
 		}
 		
 		for(int i=0;i<3;i++) {
-			if(rank[i]==1) System.out.println((i+1)+"번: 1등");
-			else if(rank[i]==2) System.out.println((i+1)+"번: 2등");
-			else System.out.println((i+1)+"번: 3등");
+			System.out.printf("%d번째 학생 점수(국,영,수):%d,%d,%d%n",i+1,kor[i],eng[i],math[i]);
+			System.out.printf("총점:%d, 평균:%.2f, 등수:%d%n", total[i],avg[i],rank[i]);
 		}
 		
 	}
