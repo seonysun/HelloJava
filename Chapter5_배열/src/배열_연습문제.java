@@ -13,8 +13,13 @@ public class 배열_연습문제 {
 		}
 		System.out.println("arr="+Arrays.toString(arr));
 		for(int i=0;i<arr.length;i++)
-			if(arr[i]%3==0) System.out.print(arr[i]+" ");
+			if(arr[i]%3==0 && arr[i]!=0) 
+				System.out.print(arr[i]+" ");
 		System.out.println();
+		/*
+		for(int i:arr)
+			if(i%3==0 && i!=0) System.out.print(i+" ");
+		*/
 		
 		
 		//문제 5. 정수 10개 저장하는 배열, 1~10 난수 추출, 배열의 숫자들과 평균 출력
@@ -46,7 +51,7 @@ public class 배열_연습문제 {
 		
 		//문제 9. 값이 60인 곳의 인덱스 출력
 		int i=0;
-		while(true) {
+		while(i<arr2.length) {
 			if(arr2[i]==60) {
 				System.out.println("값이 60인 곳:"+i);
 				break;

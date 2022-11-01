@@ -9,7 +9,7 @@ import java.util.Scanner;
  * 	- 서로 관련된 같은 타입의 데이터 3개 이상일 때 -> 배열 사용하는 것이 좋음
  * 	- 일차 배열, 다차원 배열, 가변 배열
  * 	
- *  1) 장점 - 변수 여러 개를 한 개의 이름으로 제어 -> 반복문 사용하기 좋음
+ *	1) 장점 - 변수 여러 개를 한 개의 이름으로 제어 -> 반복문 사용하기 좋음
  *		   - 연속적으로 메모리 배치 -> 인덱스 번호 이용해서 처리 가능 	
  * 	   단점 - 고정적임(한 번 결정하면 변화시키기 어려움) -> 컬렉션(가변형) 이용
  * 		   - 같은 데이터형만 모아서 관리 가능
@@ -40,6 +40,7 @@ import java.util.Scanner;
  *								System.out.println(변수명[i]); 
  *							  }
  *				뒤에서부터 출력 : for(int i=갯수-1;i>=0;i--) {}
+ *			cf. while문을 사용해도 되지만 배열은 횟수가 정해져있는 것이므로 for문을 주로 많이 사용
  *		- forEach문 : 실제 배열의 저장된 데이터값을 0번부터 출력 -> 뒤에서부터 출력 불가
  *					  for(int i:배열명) {
  *						System.out.println(i); 
@@ -103,17 +104,18 @@ public class 배열 {
 		
 		
 		//배열의 데이터값 변경 후 다시 출력
+		for(int i=0;i<arr2.length;i++) {
+			arr2[i]=arr2[i]+(i+1);
+		}
+		
 		/*
 		arr2[0]=arr2[0]+1;
 		arr2[1]=arr2[1]+2;
 		arr2[2]=arr2[2]+3;
 		arr2[3]=arr2[3]+4;
 		arr2[4]=arr2[4]+5;
-		*/
+		 */
 		
-		for(int i=0;i<arr2.length;i++) {
-			arr2[i]=arr2[i]+(i+1);
-		}
 		for(int i:arr2) {
 			System.out.print(i+" ");
 		}
@@ -141,7 +143,7 @@ public class 배열 {
 			avg[i]=total[i]/3.0;
 		}
 		
-		for(int i=0;i<3;i++) {
+		for(int i=0;i<avg.length;i++) {
 			switch((int)(avg[i]/10)) {
 			case 10: case 9:
 				score[i]='A';
@@ -162,7 +164,7 @@ public class 배열 {
 		
 		System.out.println("  국어  영어  수학   총점     평균   학점");
 		for(int i=0;i<3;i++) {
-			System.out.printf("%d:%-5d%-5d%-5d%-5d%7.2f%3c%n",i+1,kor[i],eng[i],math[i],total[i],avg[i], score[i]);
+			System.out.printf("%d:%-5d%-5d%-5d%-5d%7.2f%3c%n",i+1,kor[i],eng[i],math[i],total[i],avg[i],score[i]);
 		}
 		
 		
@@ -172,6 +174,7 @@ public class 배열 {
 		for(int i=0;i<alpha.length;i++) {
 			alpha[i]=c;
 			c++;
+			//alpha[i]=c++;
 		}
 		for(char ch:alpha) {
 			System.out.print(ch+" ");
@@ -194,43 +197,6 @@ public class 배열 {
 			System.out.print(ch+" ");
 		}
 		System.out.println();
-		
-		
-		//빈도수 계산
-		int[] arr3=new int[30];
-		for(int i=0;i<arr3.length;i++) {
-			arr3[i]=(int)(Math.random()*3);
-		}
-		System.out.println(Arrays.toString(arr3));
-		
-		int a=0, b=0, d=0;
-		for(int i:arr3) {
-			if(i==0) a++;
-			else if(i==1) b++;
-			else if(i==2) d++;
-		}
-		System.out.println("0:"+a);
-		System.out.println("1:"+b);
-		System.out.println("2:"+d);
-		
-		
-		//2진법 출력
-		System.out.print("정수 입력(0~32767):");
-		int input = scan.nextInt();
-		int[] binary = new int[16];
-		int index=15;
-		while(true) {
-			binary[index]=input%2;
-			input/=2;
-			if(input==0)
-				break;
-			index--;
-		}
-		for(int i=0;i<binary.length;i++) {
-			if(i%4==0 && i!=0)
-				System.out.print(" ");
-			System.out.print(binary[i]);
-		}
 		
 	}
 
