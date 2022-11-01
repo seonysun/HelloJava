@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class 배열활용 {
 
 	public static void main(String[] args) {
-		//랜덤 숫자 빈도수 계산
+		//빈도수 계산 - 변수
 		int[] arr=new int[30];
 		for(int i=0;i<arr.length;i++) {
 			arr[i]=(int)(Math.random()*3);
@@ -20,8 +20,25 @@ public class 배열활용 {
 		System.out.println("0:"+a);
 		System.out.println("1:"+b);
 		System.out.println("2:"+d);
+		System.out.println();
 		
 				
+		//빈도수 계산 - 배열
+		int[] count = new int[100];
+		for(int i=0;i<count.length;i++) {
+			count[i] = (int)(Math.random()*10);
+		}
+		System.out.println(Arrays.toString(count));
+		int[] result = new int[10];
+		for(int i=0;i<count.length;i++) {
+			result[count[i]]++; //count[i]는 0~9 사이의 값 -> result 배열의 해당 번호의 요소를 이용하여 빈도수 체크
+		}
+		for(int i=0;i<result.length;i++) {
+			System.out.println(i+" 빈도:"+result[i]);
+		}
+		System.out.println();
+
+		
 		//2진법 출력
 		Scanner scan = new Scanner(System.in);
 		System.out.print("정수 입력(0~32767):");
@@ -41,6 +58,7 @@ public class 배열활용 {
 			System.out.print(binary[i]);
 		}
 		System.out.println();
+		System.out.println();
 		
 				
 		//로또 번호 추첨(중복 없이)
@@ -55,6 +73,7 @@ public class 배열활용 {
 			}
 		}
 		System.out.println(Arrays.toString(lotto));
+		System.out.println();
 	
 		
 		//OX 맞추기
@@ -83,6 +102,7 @@ public class 배열활용 {
 		System.out.println(Arrays.toString(user));
 		System.out.println("정답 갯수:"+correct);
 		System.out.println("오답 갯수:"+wrong);
+		System.out.println();
 		
 		
 		//알파벳 최대,최소 출력
@@ -99,9 +119,10 @@ public class 배열활용 {
 		}
 		System.out.println("MAX="+max);
 		System.out.println("MIN="+min);
+		System.out.println();
 		
 		
-		//
+		//숫자 야구 게임
 		int[] com = new int[3];
 		for(int i=0;i<com.length;i++) {
 			com[i] = (int)(Math.random()*9)+1;
@@ -115,12 +136,13 @@ public class 배열활용 {
 		
 		int[] user1 = new int[3];
 		while(true) {
-			System.out.print("세 자리 정수 입력:");
+			System.out.print("세 자리 정수(100~999) 입력:");
 			int input1 = scan.nextInt();
-			if(input1<100 || input1>999) {
+			if(!(input1>=100 && input1<=999)) {
 				System.out.println("잘못된 입력입니다.");
 				continue;
 			}
+			
 			user1[0]=input1/100; //100의 자리 수
 			user1[1]=((input1%100)/10); //10의 자리 수
 			user1[2]=input1%10; //1의 자리 수
@@ -134,7 +156,7 @@ public class 배열활용 {
 				continue;
 			}
 			
-			int st=0, ba=0;
+			int st=0, ba=0; //st: 같은 자리, ba: 다른 자리
 			for(int i=0;i<3;i++) { //com
 				for(int j=0;j<3;j++) { //user
 					if(com[i]==user1[j]) {
