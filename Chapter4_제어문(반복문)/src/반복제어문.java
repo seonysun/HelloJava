@@ -4,22 +4,22 @@ import java.util.Scanner;
  * 2. 반복제어문
  * 	1) break;(반복 종료) : break 이하의 문장 수행하지 않고 제어문 탈출 
  * 		- 웹에서 많이 사용됨
- * 		- l이중for문에서 바로 앞의 for문만 제어 가능
+ * 		- 이중for문에서 바로 앞의 for문만 제어 가능
  * 
- *  2) continue;
+ *  2) continue; : 반복문의 끝으로 이동
  *  	- for(초기값;조건식;증감식){
- * 				continue; => 증감식으로 이동 : continue 위의 문장 제외하고 반복
+ * 				continue; => 증감식으로 이동 : continue 위의 문장 제외하고 계속 반복됨
  * 			}
  * 		- while(조건식){
- * 				continue; => 조건식으로 이동 : 무한루프 (continue 이하가 수행되지 못하고 조건식으로 이동 -> 증감식 수행되지 못하므로 false 조건 되지 못하고 계속 반복)
- *				증감식
+ * 				continue; => 조건식으로 이동 : continue 이하가 수행되지 못하고 조건식으로 이동 -> 종료 조건(증감식) 수행하지 못하므로 다시 반복
+ *				증감식(종료 조건)
  * 			}
- * 		- while의 continue는 잘못된 입력에 대한 경고줄 때 주로 사용 
+ * 		- while의 continue는 무한루프와 함께 잘못된 입력에 대한 경고줄 때 주로 사용 
  * 			ex. 다시 입력하세요 -> continue
  * 
  * 	3) 주의점 - break와 continue 바로 아랫줄(동일 괄호 내)에는 소스 코딩 시 오류 발생
- * 			- 사용 위치 : break -> 반복문(for, while), 선택문(switch)
- * 						continue -> 반복문
+ * 			- 사용 위치 : break -> 반복문(for, while), 선택문(switch)에서만
+ * 					   continue -> 반복문에서만
  *			- System.exit(0); 프로그램을 아예 종료하는 것이므로 아래에 있는 문장 전부 실행 불가
  *						(0) 정상 종료, (-1) 비정상 종료
  * */

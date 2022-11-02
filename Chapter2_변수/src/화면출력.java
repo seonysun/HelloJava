@@ -34,7 +34,7 @@ import java.util.Scanner;
  *       }
  * */
 
-public class 화면출력_printf {
+public class 화면출력 {
 
 	public static void main(String[] args) {
 			//System.out.println(); = System.out.print("\n");

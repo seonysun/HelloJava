@@ -28,7 +28,7 @@ import java.util.Scanner;
  * 		- 선조건 : 조건에 해당되지 않는 경우 수행되지 않을 수 있음
  * 					ex. String id = "" -> id가 없는 경우 while문이 수행되지 않도록 프로그래밍
  * 		- 조건식 생략 시 오류 발생 -> true/false 결과 도출 가능하도록 설정 필요
- * 		- while(true) -> false인 경우 없음 -> 무한루프 : 종료하는 프로그램 따로 첨부 or break 설정 해야 함 
+ * 		- while(true) -> false인 경우 없음 -> 무한루프 : 종료하는 프로그램 따로 첨부하거나 break 설정 해야 함 
  * 													ex. 게임 ESC -> System.exit(0);
  * 
  * 	3) do~while
@@ -39,7 +39,7 @@ import java.util.Scanner;
  * 								// 얘는 괄호가 없으니까 ; 필요
  * 		- 후조건 : 조건에 해당되지 않더라도 최소 1번은 무조건 수행
  * 
- * 웹에서는 배열은 잘 안씀
+ * cf. 웹에서는 배열은 잘 안씀
  * */
 
 public class 반복while문 {
