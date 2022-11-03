@@ -184,7 +184,7 @@ public class 반복문_연습문제 {
 		for(i=1;i<=4;i++) {
 			for(int j=1;j<5-i;j++)
 				System.out.print(" ");
-			for(int k=5-i;k<5;k++)
+			for(int k=5-i;k<5;k++) //이렇게 코딩해도 결과는 같지만 j 반복문이 돌아간 다음 k 반복문이 돌아가므로 그냥 공백과 *을 별개로 생각하는 것이 편할 듯
 				System.out.print("*");
 			System.out.println();
 		}
