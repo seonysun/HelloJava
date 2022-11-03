@@ -1,5 +1,3 @@
-package 연습문제;
-
 import java.util.Arrays;
 import java.util.Scanner;
 

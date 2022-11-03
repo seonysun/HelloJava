@@ -182,6 +182,16 @@ public class 반복문_연습문제 {
 		 * */
 		
 		for(i=1;i<=4;i++) {
+			for(int j=1;j<5-i;j++)
+				System.out.print(" ");
+			for(int k=5-i;k<5;k++)
+				System.out.print("*");
+			System.out.println();
+		}
+		
+		
+		//
+		for(i=1;i<=4;i++) {
 			for(int j=1;j<=i-1;j++) {
 				System.out.print(" ");
 			}
@@ -191,6 +201,8 @@ public class 반복문_연습문제 {
 			System.out.println();
 		}
 		
+		
+		//
 		for(i=1;i<=4;i++) {
 			for(int j=1;j<=4-i;j++) {
 				System.out.print(" ");
