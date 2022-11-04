@@ -14,6 +14,7 @@ import java.util.Arrays;
  * 			(3) valueOf(*) : 모든 데이터형 문자열로 변경
  * 					ex. int a=10; 
  * 						valueOf(a) => "10" => parseInt("10") => 10
+ * 			(4) toString(*) ; 문자열 변환
  * 		
  * 		- 문자 제어
  * 			(1) substring(**) : 문자열 자를 때 사용 -> 화면 UI
@@ -22,12 +23,12 @@ import java.util.Arrays;
  * 		- 문자 변경
  * 			(1) trim(*) : 좌우 공백 제거 -> 사용자 입력 시 공백 제거
  * 			(2) replace(*) : 지정 문자 간 변경 -> 오라클 크롤링 시(이미지 저장 & -> ^)
- * 			(3) replaceAll : 지정 문자열 간 변경
+ * 			(3) replaceAll(*) : 지정 문자열 간 변경
  * 							 정규표현식을 지정 문자로 변경 -> ip 찾기
  * 					ex. replaceAll("[0-9]{1-3}\\.[0-9]{1-3}\\.[0-9]{1-3}\\.[0-9]{1-3}")
  *									//모든 숫자로 1 or 3자리 -> 4번 반복
  *					cf. [가-힣]: 한글 전체 [A-Za-z]: 영문 전체 [0-9]: 숫자 전체
- * 			(4) split : 문자열을 배열로 변경
+ * 			(4) split(*) : 문자열을 배열로 변경
  * 					ex. String s = "red,blue,green";
  * 						String[] arr = s.split(",") => {"red","blue","green"}
  * 		
@@ -35,16 +36,16 @@ import java.util.Arrays;
  * 			(1) equals(*) : 대소문자 구분하여 비교 -> 로그인
  * 				equalsIgnoreCase : 대소문자 구분하지 않고 비교 -> 검색어
  * 			(2) contains(*) : 포함 여부 비교 -> 검색
- * 			(3) startsWith : 시작문자열 비교 -> 검색기 자동 완성(서제스트)
+ * 			(3) startsWith(*) : 시작문자열 비교 -> 검색기 자동 완성(서제스트)
  * 			(4) endsWith : 끝문자열 비교 -> 검색기 자동 완성
  * 		
  * 		- 문자 찾기
  * 			(1) indexOf(*) : 앞쪽부터 데이터 위치 찾기
- * 			(2) lastIndexOf : 뒷쪽부터 데이터 위치 찾기
+ * 			(2) lastIndexOf(*) : 뒷쪽부터 데이터 위치 찾기
  * 					ex. String s = "Hello Java";
  * 						s.indexOf("a") => J 뒤의 a
  * 						s.lastIndexOf("a") => 마지막 a
- * 			(3) length : 문자의 총 갯수 확인
+ * 			(3) length(*) : 문자의 총 갯수 확인
  * 
  * 		- 기타
  * 			(1) concat : 문자열 결합 -> + 연산자를 더 많이 사용

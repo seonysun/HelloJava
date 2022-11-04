@@ -4,12 +4,11 @@ import java.util.Scanner;
 public class 배열_연습문제 {
 
 	public static void main(String[] args) {
-		//문제 4. 양의 정수 10개 입력받아 배열에 저장, 3의 배수만 출력
 		Scanner scan = new Scanner(System.in);
+		//문제 4. 양의 정수 10개 입력받아 배열에 저장, 3의 배수만 출력
 		int[] arr = new int[10];
 		for(int i=0;i<arr.length;i++) {
-			System.out.print("정수 입력:");
-			arr[i] = scan.nextInt();
+			arr[i]=(int)(Math.random()*1000)+1;
 		}
 		System.out.println("arr="+Arrays.toString(arr));
 		for(int i=0;i<arr.length;i++)
@@ -65,36 +64,42 @@ public class 배열_연습문제 {
 		int year=scan.nextInt();
 		System.out.print("월 입력:");
 		int month=scan.nextInt();
-		System.out.println(year+"년 "+month+"월");
-		System.out.println("\n");
+		System.out.println(year+"년 "+month+"월\n");
 		
-		char[] strWeek= {'일','월','화','수','목','금','토'};
-		for(char c:strWeek)
-			System.out.print(c+"\t");
-		
-		int[] lastday= {31,28,31,30,31,30,31,31,30,31,30,31};
-		int total = (year-1)*365
-				+(year-1)/4
-				-(year-1)/100
-				+(year-1)/400;
-		
-		if((year%4==0 && year%100!=0) || year%400==0)
+		int[] lastday={31,28,31,30,31,30,31,31,30,31,30,31};
+		if(year%4==0 && year%100!=0 || year%400==0)
 			lastday[1]=29;
-		else lastday[1]=28;
+			//매월의 마지막날 -> 윤년 여부에 따라 2월은 달라짐
+
+		int total=0;
+		for(i=1;i<year;i++){
+			total+=365;
+			if(year%4==0 && year%100!=0 || year%400==0)
+				total++;
+		}
+			//전년도까지의 일수 -> 기본 365일, 윤년 조절(4년에 한번 +1, 100년에 한번 -1, 400년에 한번 +1)
+		//int total=(year-1)*365+(year-1)/4-(year-1)/100+(year-1)/400;
 		
 		for(i=0;i<month-1;i++)
 			total+=lastday[i];
+			//전달까지의 일수
+		
 		total++;
-		int week = total%7;
+		int week=total%7;
+			//해당달 1일의 요일
+		
+		char[] strWeek={'일','월','화','수','목','금','토'};
+		for(char c:strWeek)
+			System.out.print(c+"\t");
 		System.out.println();
-		for(i=0;i<=lastday[month-1];i++) {
-			if(i==1) {
-				for(int j=0;j<week;j++)
-					System.out.println();
-			}
-			System.out.printf("%2d\t",i);
-			week++;
-			if(week>6) {
+
+		for(int j=0;j<week;j++)
+			System.out.print("\t");
+			//1일의 요일 시작 전 공백
+		for(i=1;i<=lastday[month-1];i++) {
+			System.out.printf("%2d\t",i); //날짜 쭉 출력하는데
+			week++; //요일 1개씩 증가
+			if(week>6) { //7일이 되면 줄바꾸고 초기화
 				week=0;
 				System.out.println();
 			}
