@@ -30,7 +30,7 @@ public class Week3_메소드 {
 		else result=String.valueOf(a/(double)b); //결과값을 실수->문자열로 변경
 		return result;
 	}
-	//문제 5. 문자열의 소문자 대문자로 바꾸는 메소드
+	//문제 5. 문자열의 소문자를 대문자로 바꾸는 메소드
 	static String change(String a) {
 		return a.toUpperCase();
 	}
@@ -50,15 +50,13 @@ public class Week3_메소드 {
 		for(int i=s.length()-1;i>=0;i--) {
 			System.out.print(s.charAt(i));
 		}
+		System.out.println();
 	}
-	//문제 8. 학점 구하는 메소드
-	
 	//문제 9. 윤년 여부 확인하는 메소드
 	static boolean year(int y) {
-		boolean result=false;
 		if(y%4==0 && y%100!=0 || y%400==0)
-			result=true;
-		return result;
+			return true;
+		return false;
 	}
 	//문제 10. 더 큰 수를 출력하는 메소드
 	static int max(int a, int b) {
@@ -74,11 +72,10 @@ public class Week3_메소드 {
 		return a+"는 홀수";
 	}
 	//문제 12. 3의 배수 판별하는 메소드 
-	static boolean tripp(int a) {
-		boolean result=false;
+	static void tripp(int a) {
 		if(a%3==0 && a!=0)
-			result=true;
-		return result;
+			System.out.println(a+"는 3의 배수");
+		else System.out.println(a+"는 3의 배수가 아님");
 	}
 	//문제 14. 숫자 거꾸로 출력하는 메소드
 	static void revnum(int num) {
@@ -108,28 +105,40 @@ public class Week3_메소드 {
 		System.out.println(change("hi"));
 				
 		//문제 6.
-		System.out.println(symm("tfhgj"));		
+		Scanner scan=new Scanner(System.in);
+		String s;
+		while(true) {
+			System.out.print("문자열 입력:");
+			s=scan.next();
+			if(s.length()%2!=0) {
+				System.out.println("짝수개의 문자를 입력하세요.");
+				continue;
+			}
+			break;
+		}
+		if(symm(s)) System.out.println("좌우 대칭입니다.");
+		else System.out.println("좌우 대칭이 아닙니다.");
+		
+		//문제 7.
+		rev("Hello Java");
 		
 		//문제 9.
-		boolean y=year(2022);
-		if(y==true)
+		if(year(2022))
 			System.out.println("윤년입니다.");
 		else System.out.println("윤년이 아닙니다.");
 				
 		//문제 10.
-		max(3,53);
+		System.out.println("MAX="+max(3,53));
 		
 		//문제 11.
 		String ans=evenodd(23849);
 		System.out.println(ans);
 
 		//문제 12.
-		boolean tripp=tripp(23841);
-		System.out.println(tripp);
+		tripp(36234);
 		
 		//문제 14.
-		Scanner scan=new Scanner(System.in);
-		System.out.print("정수 입력:");
+		System.out.print("거꾸로 읽을 숫자 입력:");
 		int num=scan.nextInt();
 		revnum(num);
 	}
