@@ -23,7 +23,7 @@ public class Week2_제어문_String {
 		for(int i=s.length()-1;i>=0;i--) {
 			char c = s.charAt(i);
 						//첫번째 문자가 0번이므로 마지막 문자는 (총길이-1)번째 문자 -> length-1
-			System.out.println(i+":"+c);
+			System.out.print(c);
 		}
 		System.out.println();
 		
@@ -53,7 +53,7 @@ public class Week2_제어문_String {
 		for(;;) {
 			int a=num2%2;
 			result+=a;
-			num2=num2/2;
+			num2/=2;
 			if(num2==0) break;
 		}
 		for(int i=result.length()-1;i>=0;i--)

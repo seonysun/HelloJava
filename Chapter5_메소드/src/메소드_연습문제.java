@@ -37,9 +37,12 @@ public class 메소드_연습문제 {
 			a/=2;
 			if(a==0) break;
 		}
-		char[] c=result.toCharArray();
-		for(int i=c.length-1;i>=0;i--) {
-			System.out.print(c[i]+"");
+		
+		for(int i=result.length()-1;i>=0;i--) {
+			char c=result.charAt(i);
+			System.out.print(c+"");
+			if(i%4==0)
+				System.out.print(" ");
 		}
 		System.out.println();
 	}
