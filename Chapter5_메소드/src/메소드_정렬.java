@@ -11,13 +11,6 @@ public class 메소드_정렬 {
 			System.out.print(arr[i]+" ");
 		}
 	}
-	static void gugudan() {
-		for(int i=1;i<=9;i++) {
-			for(int j=2;j<=9;j++)
-				System.out.printf("%d*%d=%d\t",j,i,j*i);
-			System.out.println();
-		}
-	}
 	public static void main(String[] args) {
 		int[] arr=new int[5];
 		for(int i=0;i<arr.length;i++) {
@@ -26,9 +19,6 @@ public class 메소드_정렬 {
 		System.out.println(Arrays.toString(arr));
 		
 		sort(arr);		
-		System.out.println();
-		
-		gugudan();
 		
 	}
 

@@ -26,6 +26,7 @@ public class 메소드_구구단 {
 		
 		String s=gugudan2(dan); //메소드 실행 결과값을 동일 데이터형으로 받아와서 사용
 		System.out.println(s);
+		//System.out.println(gugudan2(dan));
 
 	}
 

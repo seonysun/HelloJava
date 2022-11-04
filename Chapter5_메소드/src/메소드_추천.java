@@ -209,8 +209,7 @@ public class 메소드_추천 {
 		return result;
 	}
 	public static void main(String[] args) {
-		String title = recommand();
-		System.out.println(title);
+		System.out.println(recommand());
 
 	}
 

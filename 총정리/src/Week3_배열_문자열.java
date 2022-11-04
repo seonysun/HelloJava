@@ -18,7 +18,7 @@ public class Week3_배열_문자열 {
 		
 		
 		//
-		String data2="버섯으로 관자 느낌 내는 방법! 새송이버섯산장버터구이 만들기";
+		String data2="버섯으로 관자 느낌 내는 방법! 새송이버섯 간장 버터구이 만들기";
 		if(data2.length()>17) {
 			data2=data2.substring(0,17)+"...";
 		}
@@ -30,7 +30,7 @@ public class Week3_배열_문자열 {
 		String address="서울특별시 동대문구 전농로23길 78 1F 지번 서울시 동대문구 전농동 221-8 1F";
 		String addr1=address.substring(0,address.lastIndexOf("지")).trim();
 		System.out.println(addr1);
-		String addr2=address.substring(0,address.indexOf("지")+3);
+		String addr2=address.substring(address.indexOf("지")+3);
 		System.out.println(addr2);
 		System.out.println();
 		
@@ -54,17 +54,16 @@ public class Week3_배열_문자열 {
 			}
 		} catch(Exception ex) {}
 		
-		for(String s:movie)
-			System.out.println(s);
+		/*for(String s:movie)
+			System.out.println(s);*/
 		
 		Scanner scan=new Scanner(System.in);
 		System.out.print("1~1938 사이의 번호 입력:");
 		int mno=scan.nextInt();
-		
-		String detail=movie[mno-1];
-		String[] ss=detail.split("\\|");
-		for(String s:ss)
+		String[] detail=movie[mno-1].split("\\|");
+		for(String s:detail)
 			System.out.println(s);
+		System.out.println();
 		
 		System.out.print("출연진 이름 입력:");
 		String name=scan.next();

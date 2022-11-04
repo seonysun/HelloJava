@@ -14,6 +14,8 @@ public class 메소드_사칙연산 {
 		return a/b;
 	}
 	public static void main(String[] args) {
+		System.out.println(add(1,3));
+		
 		Scanner scan = new Scanner(System.in);
 		System.out.print("첫번째 정수 입력:");
 		int a=scan.nextInt();
