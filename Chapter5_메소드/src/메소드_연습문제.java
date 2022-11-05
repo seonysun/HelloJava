@@ -32,15 +32,13 @@ public class 메소드_연습문제 {
 		String result="";
 		
 		while(true) {
-			if(a%2==0) result+=0;
-			else result+=1;
+			result+=a%2;
 			a/=2;
 			if(a==0) break;
 		}
 		
 		for(int i=result.length()-1;i>=0;i--) {
-			char c=result.charAt(i);
-			System.out.print(c+"");
+			System.out.print(result.charAt(i)+"");
 			if(i%4==0)
 				System.out.print(" ");
 		}
