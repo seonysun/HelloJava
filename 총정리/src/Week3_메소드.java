@@ -35,7 +35,7 @@ public class Week3_메소드 {
 		return a.toUpperCase();
 	}
 	//문제 6. 문자열의 좌우대칭 확인하는 메소드
-	static boolean symm(String s) {
+	static boolean daech(String s) {
 		boolean result=true;
 		for(int i=0;i<s.length()/2;i++) {
 			int last=s.length()-1-i;
@@ -45,6 +45,26 @@ public class Week3_메소드 {
 		}
 		return result;
 	}
+	static void daech2() {
+		Scanner scan=new Scanner(System.in);
+		String s;
+		while(true) {
+			System.out.print("문자열을 입력하세요:");
+			s=scan.next();
+			if(s.length()%2!=0) {
+				System.out.println("짝수개로 입력하세요.");
+				continue;
+			}
+			break;
+		}
+		boolean b=true;
+		for(int i=0;i<s.length()/2;i++) {
+			if(s.charAt(i)!=s.charAt(s.length()-1-i))
+				b=false;
+		}
+		if(b) System.out.println("대칭입니다.");
+		else System.out.println("대칭이 아닙니다.");
+	}	
 	//문제 7. 문자열 거꾸로 출력하는 메소드
 	static void rev(String s) {
 		for(int i=s.length()-1;i>=0;i--) {
@@ -116,8 +136,10 @@ public class Week3_메소드 {
 			}
 			break;
 		}
-		if(symm(s)) System.out.println("좌우 대칭입니다.");
+		if(daech(s)) System.out.println("좌우 대칭입니다.");
 		else System.out.println("좌우 대칭이 아닙니다.");
+		
+		daech2();
 		
 		//문제 7.
 		rev("Hello Java");
