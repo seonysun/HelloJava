@@ -25,9 +25,11 @@
  * 	- 클래스명 : 식별자 생성 조건 적용
  * 	- 특징
  * 		- 코드 재사용성 높음, 코드 관리 용이
- * 		- 이미 사용중인 프로그램 이용해 새로운 프로그램 제작 -> 신뢰성 높은 프로그램 개발 가능
- * 		- 다형성 : 포함된 메소드의 기능 변경(오버라이딩), 추가(오버로딩) 가능
- * 		- 캡슐화 : 키워드(private) 이용하여 데이터 은닉화(데이터 보호) 가능
+ * 		- 이미 사용중인 프로그램 이용해 새로운 프로그램 제작 -> 신뢰성 높은 프로그램 제작 가능
+ * 		- 다형성; 포함된 메소드의 기능 변경(오버라이딩), 추가(오버로딩)
+ * 		- 캡슐화; 키워드(private) 이용하여 데이터 은닉화(데이터 보호)
+ * 		- 상속(is-a) : 변경해서 사용(오버라이딩)
+ * 		  포함(has-a) : 있는 그대로 사용 
  * */
 
 class Student{
@@ -43,7 +45,7 @@ class FoodHouse{
 	double score;
 	String address, tel, type, price, time;
 }
-public class 클래스객체 {
+public class 클래스 {
 
 	public static void main(String[] args) {
 		Student hong=new Student(); 

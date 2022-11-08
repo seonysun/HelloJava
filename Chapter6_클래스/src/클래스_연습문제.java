@@ -35,7 +35,7 @@ class Shop{
 class Board{
 	
 }
-public class 클래스생성_연습문제 {
+public class 클래스_연습문제 {
 
 	public static void main(String[] args) {
 		Moviee mov1=new Moviee();

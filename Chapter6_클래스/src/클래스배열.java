@@ -11,7 +11,7 @@ class Music{
 	int idcrement, rank;
 		//데이터가 누적됨에 따라 계속해서 변화될 수 있는 정보 : 숫자
 }
-public class 클래스객체배열 {
+public class 클래스배열 {
 
 	public static void main(String[] args) {
 		Student[] std=new Student[3]; //일반 변수처럼 배열 사용 가능
