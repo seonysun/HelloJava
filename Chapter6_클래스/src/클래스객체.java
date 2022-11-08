@@ -1,7 +1,3 @@
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-
 /*
  * 1. 클래스
  * 	- 공통적인 데이터, 기능 모아서 관리 -> 여러 개의 클래스 간 연관 관계 이용하여 프로그램 구성 가능
@@ -47,14 +43,7 @@ class FoodHouse{
 	double score;
 	String address, tel, type, price, time;
 }
-class Music{
-	int mno;
-	String mtitle, singer, album, poster, state;
-		//변화하지 않는 정보 : String
-	int idcrement, rank;
-		//데이터가 누적됨에 따라 계속해서 변화될 수 있는 정보 : 숫자
-}
-public class 클래스 {
+public class 클래스객체 {
 
 	public static void main(String[] args) {
 		Student hong=new Student(); 
@@ -84,51 +73,6 @@ public class 클래스 {
 		food1.fno=1;
 		food1.ftitle="농민백암순대";
 		food1.score=4.6;
-		
-		
-		//
-		Music[] music=new Music[200];
-			//일반 변수처럼 배열 사용 가능
-		try {
-			int k=0;
-			for(int i=1;i<=4;i++) {
-				Document doc=Jsoup.connect("https://www.genie.co.kr/chart/top200?ditc=D&ymd=20221107&hh=12&rtm=Y&pg="+i).get();
-				Elements title=doc.select("tr.list a.title");
-				Elements singer=doc.select("tr.list a.artist");
-				Elements album=doc.select("tr.list a.albumtitle");
-				Elements etc=doc.select("tr.list span.rank");
-				Elements poster=doc.select("tr.list a.cover img");
-				for(int j=0;j<title.size();j++)	{
-					music[k]=new Music();
-					music[k].mno=k+1;
-					music[k].mtitle=title.get(j).text();
-					music[k].singer=singer.get(j).text();
-					music[k].album=album.get(j).text();
-					String s=etc.get(j).text();
-					music[k].state=s.replaceAll("[^가-힣]", "");
-					music[k].poster=poster.get(j).text();
-					System.out.println(k+1);
-					System.out.println(title.get(j).text());
-					System.out.println(singer.get(j).text());
-					System.out.println(album.get(j).text());
-					System.out.println("===========================================");
-					k++;
-				}
-			}
-		} catch(Exception ex) {}
-		
-		for(int i=0;i<music.length;i++) {
-			String str="";
-			if(music[i].state.equals("유지"))
-				str="-";
-			else if(music[i].state.equals("상승"))
-				str="▲";
-			else if(music[i].state.equals("하강"))
-				str="▼";
-			else
-				str="NEW";
-			System.out.println((i+1)+"."+str+" "+music[i].mtitle+" "+music[i].singer+" "+music[i].album);
-		}
 
 	}
 

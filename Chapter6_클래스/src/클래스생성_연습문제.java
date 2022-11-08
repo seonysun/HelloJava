@@ -1,4 +1,4 @@
-class Movie{
+class Moviee{
 	String mposter, name, opendate, janre, nation, rating, runtime;
 	double mscore;
 	int attendance, rank;
@@ -35,10 +35,10 @@ class Shop{
 class Board{
 	
 }
-public class 클래스변수설정_연습문제 {
+public class 클래스생성_연습문제 {
 
 	public static void main(String[] args) {
-		Movie mov1=new Movie();
+		Moviee mov1=new Moviee();
 		mov1.name="동감";
 		mov1.opendate="2022.11.16";
 		mov1.janre="로맨스/멜로";
