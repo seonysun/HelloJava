@@ -1,8 +1,20 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
+//245p 사용자 정의 타입 클래스
+class Time{
+	int hour;
+	int minute;
+	float second;
+	void setHour(int hour) {
+		if(hour<0 || hour>23) return;
+		this.hour=hour;
+	}
+	int getHour() {
+		return hour;
+	}
+}
 public class a {
-
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		int num=0, sum=0;

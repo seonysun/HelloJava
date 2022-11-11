@@ -1,7 +1,8 @@
 import java.util.Arrays;
 
-/* - JVM 메모리구조
- * Method area -> static(클래스변수), method
+/* 
+ * - JVM 메모리구조
+ * Method area -> static(변수, method)
  * Stack : 메모리 자체 관리; {}이 종료되면 사라짐 -> 지역변수, 매개변수 (메소드 영역에 선언되는 것)
  * Heap : 프로그래머 관리; 프로그램 종료시까지 유지, 사용하지 않거나 null이면 회수 -> 인스턴스변수(클래스 영역에 선언되는 것), 배열
  * */
@@ -63,11 +64,11 @@ public class 메소드호출 {
 		
 		메소드호출 m=new 메소드호출();
 		
-		int[] arr=m.rand(7); //결과값(int[] com)을 받아서 arr을 생성하여 저장
+		int[] arr=m.rand(7); //결과값으로 int 배열 생성됨 -> 참조변수명 arr로 정해서 저장
 		System.out.println(Arrays.toString(arr));
 		
 		int[] arr1=new int[10];
-		m.rand(arr1); //이미 생성된 arr1의 주소 제시 -> 그 주소에 결과값을 저장
+		m.rand(arr1); //매개변수로 int 배열이 필요 -> 미리 생성 후 참조변수 제시
 		System.out.println(Arrays.toString(arr1));
 		
 		
