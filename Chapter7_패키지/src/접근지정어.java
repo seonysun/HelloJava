@@ -18,10 +18,13 @@
  * 
  * 	2) 접근지정어의 활용 -> 캡슐화
  * 		- 가급적이면 변수빼고 public으로 사용
+ * 			-> 변수만 private으로 은닉화
+ * 			-> 변수 활용 가능한 메소드(getter/setter) 설정해서 사용
+ * 				(다른 클래스에서 변수 사용 시에 메소드 통해서 연결(직접 연결 불가))
  * 		- 클래스 : public
  * 		- 생성자 : public
  * 		- 메소드 : public
- * 		- 멤버변수 : private로 은닉화 -> 다른 클래스에서 사용 시에 메소드 통해서 연결(직접 연결 불가)
+ * 		- 멤버변수 : private
  * 
  * 	3) 사용법
  * 		- 변수 : [접근지정어] 데이터형 변수명;
@@ -33,7 +36,7 @@
  *				 - 클래스 : public, default, final, abstract(추상클래스)
  *				 - 메소드 : 모든 접근 지정어, final, abstract, static
  * 				 - 멤버변수 : 모든 접근 지정어(주로 private), final, static
- * 				 - 지역변수 : final
+ * 				 - 지역변수 : final -> 접근 지정어 사용 불가
  * 				 - 생성자 : public, default
  * 
  * 2. 캡슐화

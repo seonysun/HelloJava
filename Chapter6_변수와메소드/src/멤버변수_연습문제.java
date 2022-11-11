@@ -53,7 +53,7 @@ class MemberRank{
 	String pic, nickName;
 	int recipe, file, viewer, friends;
 }
-public class 클래스변수_연습문제 {
+public class 멤버변수_연습문제 {
 
 	public static void main(String[] args) {
 
