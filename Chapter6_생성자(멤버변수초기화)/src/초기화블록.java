@@ -13,15 +13,18 @@ import org.jsoup.select.Elements;
  * 	4) 추상화
  * 
  * 1. 멤버변수의 초기화
- * 	1) 명시적 초기화 -> 명시적 초기화가 불가능한 경우 2)/3) 고려
- * 	2) 생성자 : 구현해서 변수값을 구하는 경우
- * 	3) 초기화 블록 : 구현해서 변수값을 구하는 경우(생성자가 없을 때 사용 가능)
+ * 		cf. 멤버변수는 디폴트값으로 자동 초기화되지만 지역변수는 자동 초기화되지 않음
+ * 											-> 초기화 없이 사용 불가
+ * 	1) 명시적 초기화 : 가장 기본, 우선 고려
+ * 					-> 명시적 초기화가 불가능한 경우(구현해서 변수값을 구하는 경우) 2)/3) 중 선택
+ * 	2) 생성자 
+ * 	3) 초기화 블록
  * 		- 인스턴스 블록 : 인스턴스 변수, static 변수에 대한 초기화
  * 			ex. class A {
  * 					int a=10;
  * 					{ a=100; } //인스턴스 블록
  * 				}
- * 		- static 블록 : static 변수에 대한 초기화
+ * 		- static 블록(클래스 블록) : static 변수에 대한 초기화
  * 			ex. class A {
  * 					static int a=10;
  * 					static{ a=100; } //static 블록
@@ -31,11 +34,17 @@ import org.jsoup.select.Elements;
  * 2. 초기화 순서
  *  1) 클래스 변수(static) : 기본값 → 명시적 초기화 → 클래스 블록 → 생성자
  *  2) 인스턴스 변수 : 기본값 → 명시적 초기화 → 인스턴스 블록 → 생성자
- *  	cf. 클래스 블록 → 인스턴스 블록
  *  	cf. 초기화 블록과 생성자를 함께 사용하지는 않음(결국 생성자 설정값으로 초기화) -> 둘 중 하나 선택하여 사용
  *  			=> 클래스 변수 : 클래스 블록 사용(생성자 호출하지 않아도 됨)
  *  			   인스턴스 변수 : 생성자 사용(객체 생성 시 생성자 자동 호출)
+ *  	cf. 클래스 블록 → 인스턴스 블록
  *  
+ * 3. 블록
+ * 	- 인스턴스 블록 : 모든 생성자에서 공통으로 수행되는 코드 입력하는데 사용 -> 중복 코드 제거
+ * 				  (클래스 영역에서는 구현 불가하므로 블록으로 설정하여 공통 수행 코드 입력)
+ * 	- static 블록 : static은 시작 전에 자동으로 저장되어 1번만 실행
+ * 					-> static 블록에 입력된 코드는 main 메소드 실행 전 수행 
+ * 
  *  <ol class="list_movieranking">
                                     <li>
                         <div class="item_poster">
@@ -75,7 +84,7 @@ class Movie{ //변수 중심 : 데이터형 클래스
 }
 class MovieSystem{ //메소드 중심 : 액션 클래스
 	static Movie[] movie=new Movie[20];
-	static {
+	static { //static이므로 블록으로 초기화
 		try {
 			Document doc=Jsoup.connect("https://movie.daum.net/ranking/reservation").get();
 			//System.out.println(doc.toString());
@@ -96,7 +105,7 @@ class MovieSystem{ //메소드 중심 : 액션 클래스
 }
 class MovieSystem2{
 	Movie[] movie2=new Movie[20];
-	MovieSystem2(){
+	MovieSystem2(){ //인스턴스이므로 생성자로 초기화
 		try {
 			Document doc=Jsoup.connect("https://movie.daum.net/ranking/reservation").get();
 			//System.out.println(doc.toString());
@@ -133,6 +142,7 @@ public class 초기화블록 {
 
 	public static void main(String[] args) {
 		A a=new A();
+		System.out.println(a.a+","+a.b);
 		
 		System.out.println("===========클래스===========");
 		Movie[] m=MovieSystem.movie; //static이므로 객체 생성 불필요

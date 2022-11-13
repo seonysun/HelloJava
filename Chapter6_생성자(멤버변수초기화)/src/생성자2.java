@@ -4,10 +4,10 @@ class Member{
 	String address="서울";
 	String tel="010-1111-1111";
 	Member(){
-		//매개변수 생성자가 있으므로 기본생성자 자동 생성 안됨 -> 필요하면 만들어줘야 함
+		
 	}
 	Member(String name, String address, String tel){
-		mno=++mno; //회원번호는 자동입력되도록 처리
+		++mno; //회원번호는 자동입력되도록 처리
 		this.name=name;
 		this.address=address;
 		this.tel=tel;
@@ -31,13 +31,13 @@ class Moovie{
 	String title;
 	String genre;
 	Moovie(){
-		
+		//매개변수 생성자가 있으므로 기본생성자 자동 생성 안됨 -> 클래스영역에서 변수가 선언만 되었으므로 기본값 초기화 필요하면 만들어줘야 함
 	}
 	Moovie(Moovie m){
-		System.out.println("mno:"+m.mno);
-		System.out.println("title:"+m.title);
-		System.out.println("genre:"+m.genre);
-		System.out.println();
+			//객체 생성할 때 이전에 생성된 객체의 데이터 이용하는 경우에 주로 사용(인스턴스 복사)
+		this.mno=m.mno;
+		title=m.title;
+		genre=m.genre;
 	}
 	void print() {
 		System.out.println("mno:"+mno);
@@ -67,6 +67,12 @@ public class 생성자2 {
 		v1.print();
 		
 		Moovie v2=new Moovie(v1);
+		v2.print();
+		
+		v1.mno=10;
+			//v1과 v2는 별도로 저장된 각각의 인스턴스 -> 값 변경 시 v1에만 적용
+		v1.print();
+		v2.print();
 		
 	}
 

@@ -14,6 +14,16 @@ class Time{
 		return hour;
 	}
 }
+//306p 
+class Product{
+	static int pno; //모든 객체가 공유하는 변수는 static으로 설정
+	{ //객체가 생성될 때마다 static 변수의 설정값 변화되도록 블록 설정
+		pno+=1;
+	}
+	void print(){
+		System.out.println("no."+pno);
+	}
+}
 public class a {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
@@ -26,7 +36,6 @@ public class a {
 		}
 		System.out.println("합계:"+sum);
 		
-		
 		//
 		for(int i=1;i<=100;i++) {
 			System.out.print("i="+i);
@@ -38,10 +47,9 @@ public class a {
 			System.out.println();
 		}
 		
-
+		//
 		int apple=123, basket=10;
 		int su = (apple/basket)+((apple%basket)>0?1:0);
-		
 		
 		//197p 5-7 랜덤 셔플
 		int[] numArr = new int[10];
@@ -57,7 +65,6 @@ public class a {
 		}
 		System.out.println("numArr="+Arrays.toString(numArr));
 		
-		
 		//
 		int[] no = new int[10];
 		for(int i=0;i<no.length;i++) {
@@ -67,6 +74,14 @@ public class a {
 		for(int i=0;i<no.length-1;i++) {
 			
 		}
+		
+		//
+		Product p1=new Product();
+		p1.print();
+		Product p2=new Product();
+		p2.print();
+		Product p3=new Product();
+		p3.print();
 		
 	}
 
