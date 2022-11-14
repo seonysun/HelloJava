@@ -43,5 +43,4 @@ public class MusicVO {
 	public void setKey(String key) {
 		this.key = key;
 	}
-	
 }

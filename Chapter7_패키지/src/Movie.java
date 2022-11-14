@@ -1,12 +1,10 @@
-package com.sist.movie;
-
-public class MovieVO {
+public class Movie {
 	private int mno;
-	private String title;
-	private String genre, actor, grade, regdate;
+	private String title, genre, actor, grade, regdate;
 	private double score;
 	private int showUser;
 	private double reserve;
+		//우클릭 -> source -> generate getter, setter 선택 시 자동으로 생성
 	public int getMno() {
 		return mno;
 	}
