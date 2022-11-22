@@ -12,8 +12,7 @@ public class Calendar_2 {
 		int month=scan.nextInt();
 		
 		Calendar cal=Calendar.getInstance();
-		cal.set(Calendar.YEAR, year);
-		cal.set(Calendar.MONTH, month-1);
+		cal.set(year, month-1, 1);
 		
 		String[] strWeek= {"일","월","화","수","목","금","토"};
 		for(String s:strWeek) {
@@ -21,10 +20,10 @@ public class Calendar_2 {
 		}
 		System.out.println();
 		int week=cal.get(Calendar.DAY_OF_WEEK)-1;
-		//System.out.println("해당 달의 1일:"+strWeek[week]+"요일");
+											//strWeek의 0번 공백 없이 시작했으므로 -1
 		int lastday=cal.getActualMaximum(Calendar.DATE);
 		
-		for(int i=1;i<=lastday;i++) {
+		for(int i=1;i<=lastday;i++) { //1일~마지막일
 			if(i==1) {
 				for(int j=0;j<week;j++) { //1일이 해당되는 요일까지 공백 채우기
 					System.out.print("\t");

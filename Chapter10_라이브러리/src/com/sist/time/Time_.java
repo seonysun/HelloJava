@@ -8,6 +8,8 @@ import java.util.*;
  * 		- MYSQL 날짜 저장 -> LocalDateTime
  * 		- now() : 현재 날짜, 시간 읽기
  * 		  of() : 날짜, 시간 지정
+ * 		- Calendar와 비교 -> 월(month) 1부터 시작(1~12로 구성)
+ * 		  				   월요일부터 시작
  * */
 
 public class Time_ {

@@ -71,7 +71,7 @@ public class Format_2 {
 			 * 	FileInputStream(1byte) -> 파일 업/다운로드
 			 * 	FileReader(2byte) -> 한글(1글자당 2byte) */
 			int i=0;
-			StringBuffer sb= new StringBuffer();
+			StringBuffer sb=new StringBuffer();
 			while((i=fr.read())!=-1) {
 				sb.append(String.valueOf((char)i));
 			}

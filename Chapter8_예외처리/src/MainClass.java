@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
 public class MainClass extends JFrame implements ActionListener {
 							  //클래스			//인터페이스(다중상속 가능)
 	private JTextArea ta;

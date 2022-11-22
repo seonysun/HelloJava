@@ -7,8 +7,8 @@ import java.util.*;
  * 		- 생성 : Calendar cal=Calendar.getInstance();
  * 				-> 추상클래스이므로 new 이용하지 않음
  * 				-> 필요한 경우 오버라이딩
- * 		- 날짜 설정 : get(), 읽기 : set()
- * 		- 각 달의 마지막 날짜 : getActualMaximum()
+ * 		- 날짜 설정 : set(), 읽기 : get()
+ * 		- 각 달의 마지막 날짜 : getActualMaximum(Calendar.DATE)
  * 		- Calendar -> Date : 오라클 저장 시 호환
  * 		  Date -> Calendar : 오라클에서 읽어와서 제어할 때(Date는 메소드 사용 금지)
  * */
@@ -18,12 +18,13 @@ public class Calendar_ {
 	public static void main(String[] args) {
 		Calendar today=Calendar.getInstance();
 		System.out.println(today.get(Calendar.YEAR)+"년");
+											//추상클래스 Calendar의 static 상수 YEAR, MONTH, DATE...
 		System.out.println((today.get(Calendar.MONTH)+1)+"월");
 											//month: 0부터 시작 -> 출력 시(get) +1, 입력 시(set) -1
 		System.out.println(today.get(Calendar.DATE)+"일");
 		String[] strWeek= {"","일","월","화","수","목","금","토"};
 		System.out.println(strWeek[today.get(Calendar.DAY_OF_WEEK)]+"요일");
-													//week: 1부터 시작(일요일 -> 1) -> 요일 배열 0번 공백 생성
+													//week: 1부터 시작(일요일=1) -> 요일 배열 0번 공백 생성
 		System.out.println(today.get(Calendar.HOUR)+"시");
 		System.out.println(today.get(Calendar.MINUTE)+"분");
 		System.out.println(today.get(Calendar.SECOND)+"초");
@@ -42,6 +43,7 @@ public class Calendar_ {
 		cal.set(Calendar.YEAR, year);
 		cal.set(Calendar.MONTH, month-1);
 		cal.set(Calendar.DATE, day);
+		//cal.set(year, month-1, day);
 		int set_year=cal.get(Calendar.YEAR);
 		int set_month=cal.get(Calendar.MONTH)+1;
 		int set_day=cal.get(Calendar.DATE);
