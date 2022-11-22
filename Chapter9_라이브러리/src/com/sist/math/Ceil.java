@@ -1,6 +1,6 @@
 package com.sist.math;
 
-public class ceil {
+public class Ceil {
 
 	public static void main(String[] args) {
 		System.out.println(87.555);
