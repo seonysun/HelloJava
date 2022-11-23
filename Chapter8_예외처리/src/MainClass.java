@@ -10,7 +10,7 @@ public class MainClass extends JFrame implements ActionListener {
 	private int[] com=new int[3];
 	private int[] user=new int[3];
 	private int s,b;
-	MainClass(){
+	public MainClass(){
 		ta=new JTextArea();
 		JScrollPane js=new JScrollPane(ta);
 		tf=new JTextField(10);
