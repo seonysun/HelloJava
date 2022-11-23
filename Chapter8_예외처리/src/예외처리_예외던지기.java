@@ -10,8 +10,8 @@ import java.util.Scanner;
  * */
 
 class MyException extends Exception{
-	public MyException(String msg) {
-		super(msg);
+	public MyException(String msg) { //저장된 msg -> getMessage()로 출력 가능
+		super(msg); 
 	}
 }
 public class 예외처리_예외던지기 {
@@ -20,11 +20,12 @@ public class 예외처리_예외던지기 {
 		//예외던지기(예외 임의발생)
 		try {
 			int a=10;
-			if(a%2==0) {
+			if(a%2==0) { //true -> 예외 발생됨 -> catch문으로 이동
 				throw new MyException(a+"은(는) 홀수가 아닙니다.");
+				//throw 아래 문장은 소스 코딩 불가(오류 발생시켰으므로 catch문으로 이동)
 			}
 		} catch(MyException e) {
-				//사용자정의 예외처리 클래스는 catch문에서 읽을 수 없으므로 throw 처리(예외 임의로 발생함)
+				//사용자정의 예외처리 클래스는 catch문에서 읽을 수 없으므로 미리 throw 처리(예외 임의 발생)
 			System.out.println(e.getMessage());
 		}
 		System.out.println();
@@ -42,16 +43,16 @@ public class 예외처리_예외던지기 {
 					}
 				}
 			}
-		System.out.println(Arrays.toString(com));
+		//System.out.println(Arrays.toString(com));
 		
 		Scanner scan=new Scanner(System.in);
 		while(true) {
 			try {
 				System.out.print("세자리 정수 입력:");
 				int input=scan.nextInt();
-				if(input<99 || input>999) {
+				if(input<100 || input>999) {
 					throw new Exception("세자리 정수만 입력할 수 있습니다."); //continue의 역할
-						//throw 아래 문장은 소스 코딩 불가(오류 발생시켰으므로)
+																	 //-> catch문으로 가서 오류 내용 출력, while문 재진행
 				}	
 				user[0]=input/100;
 				user[1]=(input%100)/10;

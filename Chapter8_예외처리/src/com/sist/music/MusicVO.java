@@ -1,4 +1,4 @@
-package com.sist.exception;
+package com.sist.music;
 
 public class MusicVO {
 	private String title;

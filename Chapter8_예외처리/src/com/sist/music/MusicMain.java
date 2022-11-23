@@ -1,8 +1,8 @@
-package com.sist.exception;
+package com.sist.music;
 
 import java.util.Scanner;
 
-public class Main {
+public class MusicMain {
 	public static int menu() {
 		Scanner scan=new Scanner(System.in);
 		System.out.println("===MENU===");
