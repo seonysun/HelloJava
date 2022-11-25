@@ -33,6 +33,7 @@ public class Stack_Queue_ {
 		sq.pop();
 		sq.push(3);
 		sq.pop();
+		System.out.println();
 
 		//
 		Stack s=new Stack();

@@ -20,7 +20,7 @@ public class Properties_ {
 		try {
 			//저장한 파일 읽어오기
 			Properties prop=new Properties();
-			prop.load(new FileInputStream("C:\\Users\\user\\git\\seonysun1\\Chapter11_컬렉션\\src\\com\\sist\\properties\\info.properties"));
+			prop.load(new FileInputStream("C:\\Users\\csh99\\git\\seonysun\\Chapter11_컬렉션\\src\\com\\sist\\properties\\info.properties"));
 			String name=prop.getProperty("name");
 			String address=prop.getProperty("address");
 			String tel=prop.getProperty("tel");
