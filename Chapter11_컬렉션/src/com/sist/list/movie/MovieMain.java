@@ -1,6 +1,6 @@
-package com.sist.movie;
+package com.sist.list.movie;
 import java.util.*;
-import com.sist.movie.*;
+import com.sist.list.*;
 
 public class MovieMain {
 

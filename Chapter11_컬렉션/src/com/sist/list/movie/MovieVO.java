@@ -1,4 +1,4 @@
-package com.sist.movie;
+package com.sist.list.movie;
 
 public class MovieVO {
 	private int mno;

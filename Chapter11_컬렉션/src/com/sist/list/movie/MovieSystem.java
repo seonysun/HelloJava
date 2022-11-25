@@ -1,4 +1,4 @@
-package com.sist.movie;
+package com.sist.list.movie;
 import java.util.*;
 import java.io.*;
 
