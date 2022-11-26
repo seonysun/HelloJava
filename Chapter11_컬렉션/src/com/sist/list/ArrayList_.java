@@ -37,6 +37,8 @@ import java.util.*;
  * 				- ArrayList(*) : 비동기화 -> DB의 데이터 모아서 브라우저에 전송
  * 					cf. 메모리 크고 메모리 누수현상 있지만 가장 간단하고 출력 속도 빨라서 주로 사용
  * 				- Vector : 동기화 -> 서버 개발(네트워크)
+ * 					cf. 동기화 : 안정성에 초점(쓰레드 충돌 방지)
+ * 						비동기화 : 속도에 초점
  * 				- LinkedList : C언어 호환
  * 					- 인덱스 통한 단순 배열 형식이 아니라 다음 주소값(없으면 null)과 실제 데이터값을 함께 저장 
  * 						-> 메모리 크고 데이터에 대한 접근성이 낮음
@@ -107,10 +109,10 @@ public class ArrayList_ {
 		list1.add(2);
 		list1.add(5);
 		list1.add(1);
-		Collections.sort(list1);
-		for(Object i:list1) { //forEach문은 데이터형 반드시 일치해야 함
-			System.out.print(i+" ");
-		}
+		Collections.sort(list1); //오름차순
+		System.out.println(list1);
+		Collections.reverse(list1); //내림차순
+		System.out.println(list1);
 		System.out.println();
 
 		//copy

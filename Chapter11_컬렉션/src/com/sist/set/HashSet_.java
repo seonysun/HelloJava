@@ -116,11 +116,6 @@ public class HashSet_ {
 		set2.addAll(set3);
 		System.out.println("합집합"+set2);
 
-		//iterator
-		Iterator it=set3.iterator();
-		while(it.hasNext())
-			System.out.print(it.next()+" ");
-		
 	}
 
 }
