@@ -14,16 +14,18 @@
  * 			[접근지정어] abstract class 클래스명{}
  * 		- 인터페이스(*)
  * 			interface 인터페이스명{}
- * 		- 내부 클래스 : 멤버클래스, 익명의 클래스(*), 지역클래스
  * 		- 종단 클래스
  * 			[접근지정어] final class 클래스명{}
+ * 		- 내부 클래스 : 멤버클래스, 익명의 클래스(*), 지역클래스
  * 
  *	3) 메모리 할당
  * 		class Human{}
  * 		-> (1) Human h1=new Human(); //직접 연결(결합성 높은 프로그램)
- *         (2) Human h2=new Human().getClass().getDeclearedContstructor().newInstance()
- *         (3) Human h3=Human.class.getDeclearedContstructor().newInstance()
- *      (*)(4) Human h4=(Human)Class.forName("Human")
+ * 		   (2) Human h2=Human.newInstance();
+ * 		   (3) Human h3=Class.forName().getInstance();
+ *      (*)(4) Human h4=(Human)Class.forName("Human"); //변수/메소드 제어(리플렉션)
+ *         (5) Human h5=new Human().getClass().getDeclearedContstructor().newInstance();
+ *         (6) Human h6=Human.class.getDeclearedContstructor().newInstance();
  * 
  * 1. 추상클래스
  * 	- [접근지정어] abstract class 클래스명{

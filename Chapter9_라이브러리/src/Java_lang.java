@@ -19,9 +19,10 @@ import java.util.Arrays;
  *
  *		- 문자열화(*) : 메소드의 리턴형이 Object일 때 문자열로 형변환
  *			public String toString()
- *			- toString은 출력 시 생략 가능(입력 시에는 추가 필수)
- *				ex. class A{} A a=new A();
- *					입력 String s=a.toString()
+ *			- toString으로 출력 시 생략 가능(입력 시에는 추가 필수)
+ *				ex. class A{} 
+ *					A a=new A();
+ *					입력 String s=a.toString() //s에 a의 toString 메소드 내용 저장(기본은 객체 주소값)
  *						String s=(String)a;
  *						String s=String.valueOf(a)
  *					출력 System.out.println(a);
@@ -66,10 +67,10 @@ import java.util.Arrays;
  *			public String toLowerCase()
  *		- concat : 문자열 결합
  *			public String concat(String s)
- *		- trim : 좌우 공백 제거 -> 사용자 실수 방지(유효성 검사)
+ *		- trim(*) : 좌우 공백 제거 -> 사용자 실수 방지(유효성 검사)
  *			public String trim()
  *
- *		- equals : 문자열 비교(대소문자 구분) -> 로그인처리, 아이디 중복체크
+ *		- equals(*) : 문자열 비교(대소문자 구분) -> 로그인처리, 아이디 중복체크
  *			public boolean equals(String s)
  *		- equalsIgnoreCase : 문자열 비교(대소문자 구분 없음) -> 게시판, 검색기
  *			 public boolean equalsIgnoreCase(String s)
@@ -82,7 +83,7 @@ import java.util.Arrays;
  *		- endsWith : 끝 문자열이 같은지 여부 비교
  *			public boolean ensdWith(String suffix)
  *
- *		- replace : 문자, 문자열 변경
+ *		- replace(*) : 문자, 문자열 변경
  *			public String replace(String c1, String c2)
  *			public String replace(char c1, char c2)
  *			- c1 : old -> c2 : new
@@ -91,11 +92,11 @@ import java.util.Arrays;
  *			- 정규식 기호 : . | ^ ? + * 
  *				-> 실제 기호 자체로 사용시 \\ 입력 필수
  *
- *		- split : 구분자 통해 문자열 구분 후 배열에 저장 -> StringTokenizer
+ *		- split(*) : 구분자 통해 문자열 구분 후 배열에 저장 -> StringTokenizer
  *			public String[] split(String regex)
  *			- 구분자는 정규식으로 사용
  *
- *		- length : 문자 갯수 확인 -> 화면 UI
+ *		- length(*) : 문자 갯수 확인 -> 화면 UI
  *			public int length()
  *
  *		- indexOf : 원하는 문자나 문자열의 위치 찾기(앞에서부터 검색)
@@ -106,11 +107,11 @@ import java.util.Arrays;
  *			public int lastIndexOf(String s)
  *			public int lastIndexOf(char c)
  *
- *		- substring : 문자열을 자를 경우에 사용
+ *		- substring(*) : 문자열을 자를 경우에 사용
  *			public String substring(int startIndex, int endIndex)
  *			- s부터 e 전까지
  *
- *		- valueOf : 모든 데이터형을 문자열로 변환
+ *		- valueOf(*) : 모든 데이터형을 문자열로 변환
  *			public static String valueOf(int a)
  *			- 유일한 static 메소드 -> String.valueOf()
  *

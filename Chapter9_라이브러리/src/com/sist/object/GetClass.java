@@ -27,7 +27,8 @@ public class GetClass {
 		System.out.println("Card1.type:"+card1.getType());
 		
 		try{
-			Class clsName=Class.forName("com.sist.Card");
+			Class clsName=Class.forName("com.sist.object.Card");
+				//클래스 이름으로 메모리 할당
 			Object obj=clsName.getDeclaredConstructor().newInstance();
 			
 			Card c2=(Card)obj;
@@ -36,9 +37,7 @@ public class GetClass {
 		     
 		    System.out.println(c2.getNumber());
 		    System.out.println(c2.getType());
-		}catch(Exception ex) {
-			
-		}
+		}catch(Exception ex) {}
 		
 	}
 
