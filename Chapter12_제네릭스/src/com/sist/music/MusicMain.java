@@ -6,39 +6,19 @@ public class MusicMain {
 
 	public static void main(String[] args) {
 		Scanner scan=new Scanner(System.in);
-
-
-int[] arr = {10, 20, 30, 40, 50, 60, 70, 40, 30, 20};
-Set<Integer> set=new HashSet<Integer>();
-for(int i:arr)
-	set.add(i);
-System.out.println(set);
-List<Integer> list=new ArrayList<Integer>(set);
-Collections.sort(list);
-
-		
-		ArrayList list1=new ArrayList();
-		ArrayList list2=new ArrayList();
-		ArrayList kyo=new ArrayList();
-		ArrayList cha = new ArrayList();// 차집합
-		ArrayList hap=new ArrayList();
-		list1.add(1);
-		list1.add(2);
-		list1.add(3);
-		list1.add(4);
-		
-		list2.add(3);
-		list2.add(4);
-		list2.add(5);
-		list2.add(6);
-		
-		list1.addAll(list2);
-		System.out.println(list1);
-		list1.retainAll(list2);
-		System.out.println(list1);
-		list1.removeAll(list2);
-		System.out.println(list1);
-		
+		MusicSystem ms=new MusicSystem();
+	    System.out.print("지니뮤직(1),멜론(2) 선택:");
+	    int cno=scan.nextInt();
+	        
+	    ArrayList<Music> list=ms.movieCategoryData(cno);
+	        if(cno==1)
+	        	System.out.println("=== 지니뮤직 Top100 ===");
+	        else
+	        	System.out.println("=== 멜론뮤직 Top50 ===");
+	    for(Music m:list) {
+	    	System.out.println(m.getMno()+"."+m.getTitle()+" "+m.getSinger());
+	    }
+	    
 	}
 
 }

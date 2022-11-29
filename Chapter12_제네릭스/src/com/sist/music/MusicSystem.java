@@ -8,22 +8,13 @@ import org.jsoup.select.Elements;
 
 public class MusicSystem {
 	private static ArrayList<Music> list=new ArrayList<Music>();
-	/* 초기화
-	 * 	- 명시적 초기화 : 기본형 데이터만 가능
-	 * 	- 생성자 : instance 변수 초기화 
-	 * 	- 초기화 블럭 : static 변수 초기화 */
+	//데이터 수집
 	static {
 		int mno=1;
 		try {
-			//데이터 수집
 				//지니
-			for(int i=1;i<=2;i++) { //지니는 50개씩 나뉘어져있어서 100개 가져오려고 반복
+			for(int i=1;i<=2;i++) { //지니는 50개씩 구분, 100개 가져오려고 반복
 				Document doc=Jsoup.connect("https://www.genie.co.kr/chart/top200?ditc=D&ymd=20221125&hh=14&rtm=Y&pg="+i).get();
-				/* <div>
-				 * 	<div class="a">
-				 * 		<span id="b">aaa</span> //span 태그 안에 있는 b라는 값 가진 데이터 요청
-				 * 		<span class="c">bbb</span>
-				 * */
 				Elements title=doc.select("table.list-wrap td.info a.title");
 				Elements singer=doc.select("table.list-wrap td.info a.artist");
 				Elements album=doc.select("table.list-wrap td.info a.albumtitle");
@@ -64,7 +55,7 @@ public class MusicSystem {
 				String tempetc=etc.get(i).text();
 				int in=0;
 				String state=tempetc.replaceAll("[^가-힣]", "");
-				if(state.equals("유지"))
+				if(state.contains("동일"))
 					in=0;
 				else in=Integer.parseInt(tempetc.replaceAll("[^0-9]", "").trim());
 				m.setState(state);
@@ -74,14 +65,20 @@ public class MusicSystem {
 			}
 		} catch(Exception e) {}
 	}
-	//요청 처리
 	//목록 - 지니/멜론 나눠서 처리; cno
-//	public ArrayList<Music> musicCategoryData(int cno){
-//		return;
-//	}
+	public ArrayList<Music> movieCategoryData(int cno) {
+	   ArrayList<Music> mList=new ArrayList<Music>();
+	   for(Music m:list) {
+		   if(m.getCno()==cno)
+			   mList.add(m);
+	   }
+	   return mList;
+	   }
 	//노래 검색
 	//상세보기; mno
 	public static void main(String[] args) {
 		MusicSystem m=new MusicSystem();
+
 	}
+	
 }

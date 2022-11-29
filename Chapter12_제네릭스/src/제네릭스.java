@@ -11,12 +11,13 @@ import java.util.*;
  * 			-> 일반 클래스 통일 : 인터페이스
  * 	- 클래스형으로 사용
  * 		- 기본형은 불가 -> Wrapper 클래스
- * 						cf. 클래스는 자동 형변환(DownCasting) 불가 -> 일치시켜서 입력
+ * 						cf. 클래스는 자동 형변환(UpCasting) 불가 -> 일치시켜서 입력
  * 		- 사용자 정의 클래스
  * 		- Object : 데이터형을 잘 모를 때
  * 				   클래스 여러개를 하나로 제어할 때
- * 		- 와일드카드 <?> : 모든 클래스가 가능
- * 						-> 한 개의 메소드 이용해서 여러 데이터형을 받는 경우
+ * 			ex. class A, class B, class C -> Object[] obj={A,B,C};
+ * 		- 와일드카드 <?> : 모든 클래스 가능
+ * 						-> 한 개의 메소드 이용해서 여러 데이터형을 받는 경우 주로 사용
  * 		- <? extends A> : A로부터 상속받은 클래스 -> 사용자 정의 제네릭스
  * 	- T : 임시변수(클래스형) -> default Object
  * 	  E : Element(사용자 정의 클래스)
@@ -31,6 +32,22 @@ import java.util.*;
  * 			Set<E> -> Set<Music>
  * 			Map<k,V>
  * */
+
+class A{
+	
+}
+class B extends A{
+	
+}
+class C extends A{
+	
+}
+class D extends C{
+	
+}
+class E{
+	
+}
 
 class Box<T>{ //이후 지정 시 한번에 통일
 	T item;
@@ -47,16 +64,18 @@ public class 제네릭스 {
 		Box box=new Box(); //T:Object
 		box.setItem("");
 		Object obj=box.getItem();
+		
 		Box<String> box1=new Box<String>(); //T:String
 		box1.setItem("a");
 		String str=box1.getItem();
+		
 		Box<Integer> box2=new Box<Integer>(); //T:Integer
 		box2.setItem(1);
 		int i=box2.getItem();
 
-		ArrayList<?> list1=new ArrayList<Integer>();
+		ArrayList<?> list0=new ArrayList<Integer>();
 				//모든 데이터형 저장 가능 -> 프로그램에 맞게 데이터형 조절 가능
-		list1=new ArrayList<Double>();
+		list0=new ArrayList<Double>();
 
 		
 		//ArrayList
@@ -95,6 +114,52 @@ public class 제네릭스 {
 		System.out.println(key);
 		for(Object o:key)
 			System.out.println(map.get(o));
+	
+
+		//
+		ArrayList<? extends A> list1=new ArrayList<A>();
+					//A로부터 상속받은 클래스 사용 가능
+		ArrayList<? extends A> list2=new ArrayList<B>();
+		ArrayList<? extends A> list3=new ArrayList<D>();
+		//ArrayList<? extends A> list4=new ArrayList<E>();
+											//E는 A 상속 아니므로 불가
+		
+		
+		//
+		int[] arr={10, 20, 30, 40, 50, 60, 70, 40, 30, 20};
+		Set<Integer> set11=new HashSet<Integer>();
+		for(int ii:arr)
+			set11.add(ii);
+		System.out.println(set11);
+		
+		List<Integer> list11=new ArrayList<Integer>(set11);
+		Collections.sort(list11); //ASC
+		System.out.println(list11);
+		Collections.reverse(list11); //DESC
+		System.out.println(list11);
+
+		ArrayList list4=new ArrayList();
+		ArrayList list5=new ArrayList();
+		ArrayList kyo=new ArrayList();
+		ArrayList cha=new ArrayList();
+		ArrayList hap=new ArrayList();
+		
+		list4.add(1);
+		list4.add(2);
+		list4.add(3);
+		list4.add(4);
+				
+		list5.add(3);
+		list5.add(4);
+		list5.add(5);
+		list5.add(6);
+				
+		list4.addAll(list5);
+		System.out.println(list4);
+		list4.retainAll(list5);
+		System.out.println(list4);
+		list4.removeAll(list5);
+		System.out.println(list4);
 		
 	}
 

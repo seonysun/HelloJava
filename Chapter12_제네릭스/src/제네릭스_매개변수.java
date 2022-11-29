@@ -17,7 +17,6 @@ public class 제네릭스_매개변수 {
 		System.out.println();
 	}
 	public static void display(ArrayList<?> list) {
-									//<?>;와일드카드 -> 생략해도 동일하게 Object형
 									//일반 데이터형의 경우 관계없지만 클래스형이 들어오면 데이터형 고려
 		for(Object o:list)
 			System.out.print(o+" ");
