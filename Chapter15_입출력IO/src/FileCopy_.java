@@ -7,7 +7,7 @@ public class FileCopy_ {
 		try
         {
         	FileInputStream fis=new FileInputStream("c:\\javaDev\\movie.txt");
-        	FileOutputStream fos=new FileOutputStream("c:\\download\\movie1.txt");
+        	FileOutputStream fos=new FileOutputStream("c:\\java_data\\movie1.txt");
         	/*int i=0;
         	while((i=fis.read())!=-1)
         	{

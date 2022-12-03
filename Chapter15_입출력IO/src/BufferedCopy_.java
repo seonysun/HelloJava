@@ -5,7 +5,7 @@ public class BufferedCopy_ {
 	public static void main(String[] args) {
 		 try
 	        {
-	        	BufferedInputStream bis=new BufferedInputStream(new FileInputStream("c:\\javaDev\\apache-tomcat-9.0.68.zip"));
+	        	BufferedInputStream bis=new BufferedInputStream(new FileInputStream("c:\\javadev\\apache-tomcat-9.0.68.zip"));
 	        	BufferedOutputStream bos=
 	        			new BufferedOutputStream(new FileOutputStream("c:\\java_data\\tomcat.zip"));
 	        	byte[] buffer=new byte[1024];

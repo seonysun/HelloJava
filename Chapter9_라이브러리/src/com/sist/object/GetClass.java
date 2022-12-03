@@ -28,7 +28,7 @@ public class GetClass {
 		
 		try{
 			Class clsName=Class.forName("com.sist.object.Card");
-				//클래스 이름으로 메모리 할당
+				//클래스 이름(경로)으로 클래스객체 참조(메모리 할당)
 			Object obj=clsName.getDeclaredConstructor().newInstance();
 			
 			Card c2=(Card)obj;

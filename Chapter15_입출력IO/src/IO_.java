@@ -142,11 +142,11 @@ public class IO_ {
 			}
 			System.out.println();
 			
-			File dir2=new File("c:\\download");
+			File dir2=new File("c:\\java_data");
 						//File 클래스로 디렉토리, 파일 모두 관리 가능
 			if(!dir2.exists())
 				dir2.mkdir();
-			File file=new File("c:\\download\\Sawon.txt");
+			File file=new File("c:\\java_data\\sawon.txt");
 			if(!file.exists())
 				file.createNewFile();
 			

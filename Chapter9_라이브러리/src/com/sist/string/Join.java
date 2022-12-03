@@ -17,12 +17,12 @@ public class Join {
 		String s=String.join("-", colors);
 						//배열 요소 각각을 구분자로 묶어서 문자열 하나에 저장
 		System.out.println(s);
-		s=color.replace(",", "-");
-		System.out.println(s);
+		String c=color.replace(",", "-");
+		System.out.println(c);
 		System.out.println();
 		
 		
-		//
+		//StringJoiner
 		StringJoiner sj=new StringJoiner("/","{","}");
 									//구분자,접두어(prefix),접미어(suffix)
 			//이미지 저장시 주로 사용 -> 여러개 묶어서 동시에 저장 후 구분자 사용해 나눠서 출력
@@ -44,12 +44,20 @@ public class Join {
 			}
 			System.out.println();
 			
-			//디코딩
 			byte[] b2=name.getBytes("CP949");
+			System.out.println(Arrays.toString(b2));
 			for(byte bb:b2) {
 				System.out.print(String.format("%02X", bb));
 			}
-			System.out.println("\n");
+			System.out.println();
+			
+			//디코딩
+			String s1=new String(b,"UTF-8");
+									//한글 3byte
+			String s2=new String(b2,"CP949");
+									//한글 2byte
+			System.out.println(s1);
+			System.out.println(s2);
 		} catch(Exception e) {}
 
 		

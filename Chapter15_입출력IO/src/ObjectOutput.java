@@ -110,7 +110,7 @@ class School{
 		list.add(new Student(2,"김두한","컴공과",85,92,70));
 		list.add(new Student(3,"박문수","수학과",86,93,60));
 		try{
-			ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("c:\\download\\student.txt"));
+			ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("c:\\java_data\\student.txt"));
 			oos.writeObject(list);
 			oos.close();
 		} catch(Exception e) {}
@@ -132,7 +132,7 @@ class School{
 	public void studentSave(Student s) {
 		list.add(s);
 		try {
-			ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("c:\\download\\student.txt"));
+			ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("c:\\java_data\\student.txt"));
 			oos.writeObject(list);
 			oos.close();
 		} catch(Exception e) {}
@@ -140,7 +140,7 @@ class School{
 	//학생목록
 	public ArrayList<Student> studentListData(){
 		try {
-			ObjectInputStream ois=new ObjectInputStream(new FileInputStream("c:\\download\\student.txt"));
+			ObjectInputStream ois=new ObjectInputStream(new FileInputStream("c:\\java_data\\student.txt"));
 			list=(ArrayList<Student>)ois.readObject();
 			ois.close();
 		} catch(Exception e) {}
@@ -169,7 +169,7 @@ class School{
 	//종료
 	public void exit() {
 		try {
-			ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("c:\\download\\student.txt"));
+			ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("c:\\java_data\\student.txt"));
 			oos.writeObject(list);
 			oos.close();
 			System.out.println("저장 완료.");

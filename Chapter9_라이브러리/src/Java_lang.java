@@ -13,9 +13,11 @@ import java.util.Arrays;
  *		- 생성된 모든 클래스는 Object 제공 메소드 사용 가능
  *
  *		- 복제 기능(*) : 같은 값을 가진 메모리 새롭게 만들어 줌 (스프링 : prototype)
- *			참조(얕은 복사) : 같은 주소를 제어; a=b
- *			복제(깊은 복사) : 새로운 메모리 생성, 다른 주소를 제어; b=a.clone();
  *			protected Object clone()
+ *				cf. 참조(얕은 복사) : 같은 주소를 제어
+ *									-> Object의 clone() : 원본 객체의 값 그대로 복사
+ *					복제(깊은 복사) : 새로운 메모리 생성, 다른 주소를 제어
+ *									-> clone() 생성 후 객체에 새로운 인스턴스 참조
  *
  *		- 문자열화(*) : 메소드의 리턴형이 Object일 때 문자열로 형변환
  *			public String toString()
@@ -41,8 +43,22 @@ import java.util.Arrays;
  *				cf. Object = 주소값 비교, String = 저장된 문자열 비교
  *					-> Object에서는 equals 사용 빈도 거의 없고 String(Object 상속)으로 비교
  *
- *		- 객체를 얻어오는 메소드(객체 정보)(*)
+ *		- 속한 클래스의 클래스객체를 반환하는 메소드(객체 정보)(*)
  *			public Class getClass()
+ *			- 클래스객체 : 클래스의 모든 정보 포함, 클래스당 1개씩 존재
+ *						-> 실행 시 클래스객체 메모리 존재 여부 확인
+ *						-> 존재할 경우 객체 주소 반환
+ *						   존재하지 않을 경우 지정된 경로로 클래스 찾아서 클래스객체로 생성, 메모리에 로드
+ *			- 클래스객체 참조 방법
+ *				- Class 객체명=new 클래스명().getClass();
+ *							//생성된 객체로부터 얻음
+ *				- Class 객체명=클래스명.class;
+ *							//클래스 파일로부터 얻음
+ *				- Class 객체명=Class.forName("클래스명");
+ *					-> DB 드라이버와 같은 클래스 파일 메모리에 로드할 때 주로 사용 
+ *			- 객체 생성
+ *				- 클래스명 객체명=new 클래스명(); -> 생성자 이용
+ *				- 클래스명 객체명=클래스명.class.newInstance(); -> 클래스객체의 메소드 이용
  *
  *		- 자바에서 지원하는 대부분의 메소드는 리턴형 Object(모든 데이터형 가능) -> 형변환해서 사용
  *
@@ -71,7 +87,7 @@ import java.util.Arrays;
  *			public String trim()
  *
  *		- equals(*) : 문자열 비교(대소문자 구분) -> 로그인처리, 아이디 중복체크
- *			public boolean equals(String s)
+ *			public boolean equals(Object o)
  *		- equalsIgnoreCase : 문자열 비교(대소문자 구분 없음) -> 게시판, 검색기
  *			 public boolean equalsIgnoreCase(String s)
  *
@@ -81,12 +97,11 @@ import java.util.Arrays;
  *		- startsWith : 시작 문자열이 같은지 여부 비교 -> 쿠키 출력(최근 방문 사이트)
  *			public boolean startsWith(String prefix)
  *		- endsWith : 끝 문자열이 같은지 여부 비교
- *			public boolean ensdWith(String suffix)
+ *			public boolean endsWith(String suffix)
  *
  *		- replace(*) : 문자, 문자열 변경
- *			public String replace(String c1, String c2)
- *			public String replace(char c1, char c2)
- *			- c1 : old -> c2 : new
+ *			public String replace(String old, String nw)
+ *			public String replace(char old, char nw)
  *		- replaceAll : 정규식(문자열 패턴)을 이용하여 변경 -> 크롤링
  *			public String replaceAll(String regex, String s)
  *			- 정규식 기호 : . | ^ ? + * 
@@ -95,14 +110,16 @@ import java.util.Arrays;
  *		- split(*) : 구분자 통해 문자열 구분 후 배열에 저장 -> StringTokenizer
  *			public String[] split(String regex)
  *			- 구분자는 정규식으로 사용
+ *		- join : 문자열 사이에 구분자 넣어서 결합
  *
  *		- length(*) : 문자 갯수 확인 -> 화면 UI
  *			public int length()
  *
  *		- indexOf : 원하는 문자나 문자열의 위치 찾기(앞에서부터 검색)
  *			public int indexOf(String s)
- *			public int indexOf(char c)
+ *			public int indexOf(char c, int pos) : pos부터 확인
  *			- 문자열 시작 번호 0
+ *			- 없으면 -1 반환
  *		- lastIndexOf : 원하는 문자나 문자열의 위치 찾기(뒤에서부터 검색)
  *			public int lastIndexOf(String s)
  *			public int lastIndexOf(char c)
@@ -125,16 +142,18 @@ import java.util.Arrays;
  *		- 기본형 데이터를 참조형(클래스형 Object)으로 변환
  *			-> 기본형에서 필요한 메소드를 제공 -> 사용에 편리
  *				ex. 문자열 정수로 변환, 이진법 변환 등
- *		- Integer, Double, Boolean, Long, Byte, Short, Float
+ *			-> Integer, Double, Boolean, Long, Byte, Short, Float
  *		- 박싱 : Integer i=10; 클래스형에 실제 데이터값(리터럴)을 대입
  *		  언박싱 : int k=i; 기본형에 클래스형 데이터를 대입
+ *		- 문자열 변환
+ *			parseInt, parseDouble, parseBoolean, parseLong
+ *		- equals() : 실제값 비교
  *		- Collection : 데이터 모아서 관리 -> 배열 대체(가변형)
- *		- 문자열 변환 -> parseInt, parseDouble, parseBoolean, parseLong
  *
  *	5) Math : 기본적인 수학 계산 -> 게임에서 많이 사용, 웹에서는 사용 빈도 적음
- *		- random : 난수 추출
- *		- ceil : 올림 -> 페이지 나누기
- *		- round : 반올림
+ *		- static double random() : 난수 추출
+ *		- static double ceil(double d) : 올림 -> 페이지 나누기
+ *		- static long round(double d) : 반올림
  *
  *	6) System
  *		- 입출력

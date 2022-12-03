@@ -62,15 +62,15 @@ public class ObjectStream_ {
 		list.add(new Sawon11(4,"강감찬","총무부","인천","사원"));
 		list.add(new Sawon11(5,"박지성","개발부","서울","부장"));
 		try {
-			ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("c:\\download\\sawon1.txt"));
+			ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("c:\\java_data\\sawon1.txt"));
 			oos.writeObject(list);
 			oos.close();
-			System.out.println("저장 완료.");
+			System.out.println("저장 완료!");
 		} catch(Exception e) {}
 
 		ArrayList<Sawon11> list1=new ArrayList<Sawon11>();
 		try {
-			ObjectInputStream ois=new ObjectInputStream(new FileInputStream("c:\\download\\sawon1.txt"));
+			ObjectInputStream ois=new ObjectInputStream(new FileInputStream("c:\\java_data\\sawon1.txt"));
 			list=(ArrayList<Sawon11>)ois.readObject();
 			ois.close();
 			for(Sawon11 s:list1) {
