@@ -16,12 +16,17 @@ import java.util.*;
  * 	3) StringTokenizer : 구분자 기준으로 문자열을 자를 경우
  * 		- 네트워크(DB 연결, 서버 개설)에서 많이 사용
  * 		- StringTokenizer 객체명 = new StringTokenizer(문자열, 구분자);
- * 		- countTokens() : 잘린 단어 갯수 셀 때
- * 		- nextToken() : 분리된 문자열 읽을 때
+ * 		- int countTokens() : 잘린 단어 갯수 셀 때
+ * 		- String nextToken() : 분리된 문자열 읽을 때
  * 						-> 갯수 확인 필수(잘려진 갯수보다 많은 메소드 호출할 수 없음)
  * 						-> 직접 가져오기보다는 루프 사용
- * 		- hasMoreTokens() : 루프(while) 사용 시
- * 		- split -> //|, StringTokenizer -> |
+ * 		- boolean hasMoreTokens() : 루프(while) 사용 시
+ * 		- 		split			  StringTokenizer
+ *		   ----------------------------------------
+ * 			  배열로 반환			     문자열로 반환
+ * 			  공백 토큰 O				  공백 토큰 X
+ * 				 //|					 |
+ * 			구분자 문자 여러개 가능	   구분자 문자 1개만 가능
  * 
  * 	4) Date
  * 	5) Calender
@@ -67,7 +72,7 @@ class Member{
 public class Java_util {
 
 	public static void main(String[] args) {
-		//random
+		//Random
 		Random r=new Random();
 		int i=r.nextInt(31)+1;
 		System.out.println(i+"\n");
@@ -85,7 +90,7 @@ public class Java_util {
 		System.out.println("\n");
 		
 		
-		//stringTokenizer
+		//StringTokenizer
 		String date="2022-11-21";
 		StringTokenizer st=new StringTokenizer(date,"-");
 												//구분자가 공백일 경우 생략 가능
@@ -102,7 +107,7 @@ public class Java_util {
 				"100|hong|남자|대기실",
 				"200|자바방|5|공개",
 				"210|자바방|hong",
-				"300|hong|shin|Hi :-)",
+				"300|hong|shin|Hi~",
 				"400|hong"};
 		for(String msg:data) {
 			StringTokenizer st1=new StringTokenizer(msg,"|");
@@ -121,14 +126,14 @@ public class Java_util {
 				String rName=st1.nextToken();
 				String rInwon=st1.nextToken();
 				String rState=st1.nextToken();
-				System.out.println(rName+"("+rInwon+"명), "+rState);
+				System.out.println(rName+"("+rInwon+"명):"+rState);
 			}
 			break;
 			case 300:{
 				String myId=st1.nextToken();
 				String yourId=st1.nextToken();
 				String m=st1.nextToken();
-				System.out.println(myId+"님이 "+yourId+"님께 메시지를 보냈습니다.> "+m);
+				System.out.println(myId+"님이 "+yourId+"님께 메시지를 보냈습니다.\n> "+m);
 			}
 			break;
 			case 400:{
@@ -137,13 +142,14 @@ public class Java_util {
 			}
 			}
 		}
+		System.out.println();
 			
-		//안됨..
+		//
 		String data1="list.jsp?id=admin&pwd=1234&sex=남자&name=홍길동&tel=010-1111-1111";
 		data1=data1.substring(data1.indexOf("?")+1);
 		StringTokenizer st2=new StringTokenizer(data1,"&");
 		try {
-			Class clsName=Class.forName("com.sist.util.Member");
+			Class clsName=Class.forName("Member");
 			Object obj=clsName.getDeclaredConstructor().newInstance();
 			Method[] methods=clsName.getDeclaredMethods();
 			while(st2.hasMoreTokens()) {
