@@ -62,8 +62,8 @@ public class ArrayList_2 {
 		for(int i=0;i<list.size();i++) {
 			Sawon s=(Sawon)list.get(i);
 				//메소드를 받아와야 하므로 Object로 받을 수 없음, 형변환 형태로
-			System.out.println("사번:"+s.getSabun()+
-					" "+s.getName()+"/"+s.getDept()+
+			System.out.println("사번 "+s.getSabun()+
+					":"+s.getName()+"/"+s.getDept()+
 					"/"+s.getLoc()+"/"+s.getPay());
 		}
 		System.out.println();

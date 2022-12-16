@@ -8,23 +8,22 @@ import java.util.*;
  * 			-> key 이용해서 value 얻는 방식으로 구현
  * 			ex. id = admin
  * 		- 순서 없음
- * 		- 사용처
- * 			- 클래스관리(외부 지원 라이브러리; Spring, MyBatis), 요청값관리, 전송값관리 시 주로 사용
- * 			- 웹에서 지원하는 모든 클래스 : Map 형식
- * 				-> HttpServletRequest : 사용자가 보내주는 데이터
- * 				   HttpServletResponse : 사용자 요청 처리 결과 브라우저로 전송
- * 			   	   HttpSession : 서버에 데이터 저장
- * 			   	   Cookie : 사용자의 브라우저에 저장
+ * 		- 클래스관리(외부 지원 라이브러리; Spring, MyBatis), 요청값관리, 전송값관리 시 주로 사용
+ * 		- 웹에서 지원하는 모든 클래스 : Map 형식
+ * 			-> HttpServletRequest : 사용자가 보내주는 데이터
+ * 			   HttpServletResponse : 사용자 요청 처리 결과 브라우저로 전송
+ * 		   	   HttpSession : 서버에 데이터 저장
+ * 		   	   Cookie : 사용자의 브라우저에 저장
  * 		- 구현된 클래스
  * 			- Hashtable : 동기화
  * 					- null 허용되지 않음
  * 			- HashMap(*) : Hashtable의 단점 보완, 비동기화
  * 					- null 허용
  * 		- 주요메소드
- * 			- put(String key, Object value) : 데이터 추가
- * 			- get(String key) : 데이터 읽기
- * 			- keySet() : key 모아서 가져옴
- * 			- values()
+ * 			- Object put(Object key, Object value) : 데이터 추가
+ * 			- Object get(Object key) : 데이터 읽기
+ * 			- Set keySet() : 저장된 모든 key 객체 반환 -> key는 중복 불가이므로 Set
+ * 			- Collection values() : 저장된 모든 value 객체 반환
  * */
 
 public class Map_ {

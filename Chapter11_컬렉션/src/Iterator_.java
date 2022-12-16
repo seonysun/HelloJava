@@ -2,17 +2,23 @@ import java.util.*;
 
 /*
  * 1. Iterator
- * 	- 컬렉션에 저장되어있는 데이터를 모아서 한번에 접근
- * 		-> 표준화(ArrayList, Vector, LinkedList, HashSet, HashMap)
+ * 	- 컬렉션에 저장된 데이터에 접근 목적 인터페이스
+ * 		-> 다양한 유형의 컬렉션 데이터 읽어오는 방법 표준화
+ * 		-> 코드 일관성 유지, 재사용성 극대화
+ * 		cf. 컬렉션 : 표준화된 방식으로 데이터 저장, 처리
+ * 				   ArrayList, Vector, LinkedList, HashSet, HashMap
+ * 	- 재사용 불가 -> 사용시마다 객체 정의되어야 함
  * 
  * 	1) Iterator -> 단방향
- * 		- hasNext() : 1->5
- * 		- next() : 실제 해당 위치의 데이터를 읽어옴
- * 		- remove() : 데이터 삭제
+ * 		- boolean hasNext() : 읽어올 데이터 있는지 확인
+ * 							  1->5
+ * 		- Object next() : 다음 데이터 읽어옴
+ * 		- void remove() : next()로 읽어온 데이터 삭제
  * 
  * 	2) ListIterator -> 양방향
- * 		- List -> ArrayList, Vector, LinkedList에서만 사용 가능
- * 		- hasPrevious() : 5->1
+ * 		- List(ArrayList, Vector, LinkedList)에서만 사용 가능
+ * 		- boolean hasPrevious() : 읽어올 데이터 있는지 확인
+ * 						  5->1
  * */
 
 public class Iterator_ {

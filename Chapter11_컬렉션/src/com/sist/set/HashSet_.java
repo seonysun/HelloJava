@@ -12,8 +12,10 @@ import java.util.*;
  * 			-> List, Set은 모두 Collection 상속받은 인터페이스
  * 			-> 메소드 거의 동일
  * 				cf. 수정(set) 불가 -> 순서(인덱스)가 없으므로 지정할 수 없음
- * 			- headSet() : 범위 설정(매개변수까지), TreeSet만 사용 가능
- * 			- tailSet() : 범위 설정(매개변수부터), TreeSet만 사용 가능
+ * 			- headSet(Object o) : 지정된 객체보다 작은 값의 객체들 반환
+ * 								  범위 설정(매개변수까지), TreeSet만 사용 가능
+ * 			- tailSet(Object o) : 지정된 객체보다 큰 값의 객체들 반환
+ * 								  범위 설정(매개변수부터), TreeSet만 사용 가능
  * */
 
 class Person implements Cloneable{

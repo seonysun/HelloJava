@@ -2,10 +2,10 @@ package com.sist.list;
 import java.util.*;
 
 /*
-//컴포넌트 : 기능 갖는 클래스 
-//	-> java : CBD(Component Based Developer) 이미 만들어진 라이브러리 조립하여 프로그래밍
-//컨테이너 : 메인 클래스(조립기)
-//형상관리 : 깃, 협업
+ * 컴포넌트 : 기능 갖는 클래스 
+ * 	-> java : CBD(Component Based Developer) 이미 만들어진 라이브러리 조립하여 프로그래밍
+ * 컨테이너 : 메인 클래스(조립기)
+ * 형상관리 : 깃, 협업
  * 
  * 0. 오라클의 데이터형
  * 	- 문자열 String
@@ -30,50 +30,57 @@ import java.util.*;
  * 
  * 	- 용도 -> 데이터 수집 : ArrayList, 데이터 전송 : Map, 데이터 중복 제거 : Set
  * 
- * 		1) List -> 대기자명단, DB
- *		 	- 순서 가짐(배열 형식 -> 인덱스), 인덱스번호 순차적으로 자동생성(삭제, 추가 시 순차 이동)
- * 			- 저장된 데이터 중복 허용
- * 			- 구현된 클래스
- * 				- ArrayList(*) : 비동기화 -> DB의 데이터 모아서 브라우저에 전송
- * 					cf. 메모리 크고 메모리 누수현상 있지만 가장 간단하고 출력 속도 빨라서 주로 사용
- * 				- Vector : 동기화 -> 서버 개발(네트워크)
- * 					cf. 동기화 : 안정성에 초점(쓰레드 충돌 방지)
- * 						비동기화 : 속도에 초점
- * 				- LinkedList : C언어 호환
- * 					- 인덱스 통한 단순 배열 형식이 아니라 다음 주소값(없으면 null)과 실제 데이터값을 함께 저장 
- * 						-> 메모리 크고 데이터에 대한 접근성이 낮음
- * 					cf. 속도비교
- * 						- 데이터 읽기는 ArrayList가 빠름
- * 							-> 웹은 DB 읽어오는 과정이 많으므로 ArrayList 위주
- * 					  	- 데이터 수정, 삭제 많을 때는 LinkedList가 빠름(인덱스 번호 수정 불필요)
- * 							-> 앱은 프로그램 자체에서 처리하는 과정이 많으므로 LinkedList 위주
- * 				------------------------------------------------------------------------ 메소드 동일
- * 				- Stack : LIFO(후입선출) -> 메모리, 메소드 호출
- * 				- Queue : FIFO(선입선출) -> 네트워크, 운영체제 스케줄러
+ * 	1) List -> 대기자명단, DB
+ *	 	- 순서 가짐(배열 형식 -> 인덱스), 인덱스번호 순차적으로 자동생성(삭제, 추가 시 순차 이동)
+ * 		- 저장된 데이터 중복 허용
+ * 		- 구현된 클래스
+ * 			- ArrayList(*) : 비동기화 -> DB의 데이터 모아서 브라우저에 전송
+ * 				cf. 메모리 크고 메모리 누수현상 있지만 가장 간단하고 출력 속도 빨라서 주로 사용
+ * 			- Vector : 동기화 -> 서버 개발(네트워크)
+ * 				cf. 동기화 : 안정성에 초점(쓰레드 충돌 방지)
+ * 					비동기화 : 속도에 초점
+ * 			- LinkedList : C언어 호환
+ * 				- 인덱스 통한 단순 배열 형식이 아니라 다음 주소값(없으면 null)과 실제 데이터값을 함께 저장 
+ * 					-> 메모리 크고 데이터에 대한 접근성이 낮음
+ * 				cf. 속도비교
+ * 					- 데이터 읽기는 ArrayList가 빠름
+ * 						-> 웹은 DB 읽어오는 과정이 많으므로 ArrayList 위주
+ * 				  	- 데이터 수정, 삭제 많을 때는 LinkedList가 빠름(인덱스 번호 수정 불필요)
+ * 						-> 앱은 프로그램 자체에서 처리하는 과정이 많으므로 LinkedList 위주
+ * 			------------------------------------------------------------------------ 메소드 동일
+ * 			- Stack : LIFO(Last in first out; 후입선출) 
+ * 						-> 배열 기반 ArrayList
+ * 						-> 메모리, 메소드 호출
+ * 				- 저장(push) 출력(pop)
+ * 			- Queue : FIFO(First in first out; 선입선출) 
+ * 						-> LinkedList(앞 번호 데이터 수정되면 뒷 번호 모두 수정되어야 하므로)
+ * 						-> 네트워크, 운영체제 스케줄러
+ * 				- 저장(offer) 출력(poll)
  * 
- * 			- 주요메소드 
- * 				cf. 데이터 관리 인터페이스 
- * 					-> 자료구조 CURD : Create, Update, Read, Delete
- * 									(추가 INSERT, 수정 UPDATE, 삭제 DELETE, 검색 SELECT)
- * 				- void add(Object o) : 데이터 추가
- * 				- void set(int index, Object o) : 데이터 수정
- * 				- Object get(int index) : 데이터 읽기
- * 				- int size() : 저장된 갯수 확인
- * 				- void remove(int index) : 데이터 삭제
- * 				- void clear() : 전체 삭제
- * 				- boolean isEmpty() : 데이터 존재 여부 확인 
- * 
- * 				- removeAll() : 차집합(공통되지 않은 요소) -> (오라클) MINUS
- * 				- addAll() : 합집합(전체, 교집합 중복 제거) -> (오라클) UNION(중복제거)/UNIONALL(중복유지)
- * 				- retainAll() : 교집합(공통된 요소) -> (오라클) INTERSECT
- * 				- iterator() : 데이터 모아서 한번에 관리 
+ *  	- 주요메소드 
+ * 			cf. 데이터 관리 인터페이스 
+ * 				-> 자료구조 CURD : Create, Update, Read, Delete
+ * 								(추가 INSERT, 수정 UPDATE, 삭제 DELETE, 검색 SELECT)
+ * 			- void add(Object o) : 데이터 추가
+ * 			- Object set(int index, Object o) : 데이터 수정
+ * 			- Object get(int index) : 데이터 읽기
+ * 			- int size() : 저장된 갯수 확인
+ * 			- Object remove(int index) : 데이터 삭제
+ * 			- void clear() : 전체 삭제
+ * 			- boolean isEmpty() : 데이터 존재 여부 확인 
+ * 			- 다른 컬렉션과 데이터 비교 메소드
+ * 				- boolean removeAll(Collection c) : 차집합(공통되지 않은 요소) -> (오라클) MINUS
+ * 				- boolean addAll(Collection c) : 합집합(전체, 교집합 중복 제거) -> (오라클) UNION(중복제거)/UNIONALL(중복유지)
+ * 				- boolean retainAll(Collection c) : 교집합(공통된 요소) -> (오라클) INTERSECT
+ * 				-> Collection에 변화 있을 시(성공 시) true, 없을 시(실패 시) false
+ * 			- Iterator iterator() : Iterator 반환(데이터 접근 인터페이스)
  * */
 
 public class ArrayList_ {
 
 	public static void main(String[] args) {
 		ArrayList<String> list=new ArrayList<String>();
-				//제네릭스 -> Object형 한번에 데이터형 바꿀 수 있음(wrapper 클래스형으로 바꿔야 함)
+				//제네릭스 -> Object형 한번에 데이터형 바꿀 수 있음(Wrapper 클래스형으로 바꿔야 함)
 		//add
 		list.add("홍길동"); //인덱스 0 -> 순차 저장
 		list.add("심청이"); //1 
@@ -83,7 +90,7 @@ public class ArrayList_ {
 		for(int i=0;i<list.size();i++) { //인덱스 순차적으로 빈칸없이 채워지므로 for문 가능
 					//저장된 갯수
 			String name=list.get(i).toString();
-						//제네릭스 설정하지 않았을 때 : get() 메소드의 리턴형 Object -> 형변환 필요
+						//제네릭스 설정하지 않았을 때 get() 메소드의 리턴형 Object -> 형변환 필요
 			System.out.println(i+". "+name);
 		}
 		
