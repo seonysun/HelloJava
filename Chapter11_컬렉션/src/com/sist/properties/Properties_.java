@@ -4,7 +4,8 @@ import java.io.*;
 
 /*
  * 4) properties : 파일 읽어서 데이터 가져옴(DB에서 유저 id, pw)
- * 		- key + value : id=aa, pw=1234
+ * 		- Hashtable 상속
+ * 			-> key + value 형태로 데이터 저장, (String, String)
  * 		- 스프링에서 주로 사용(유효성 검사), MyBatis(DB 정보 저장)
  * 			-> 중요한 데이터가 있는 경우 웹에 정보 그대로 저장하면 노출 위험 
  * 			-> 파일로 저장해서 감춰서 가져옴
