@@ -1,5 +1,3 @@
-package com.sist;
-
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
@@ -11,7 +9,7 @@ import java.lang.annotation.Target;
  * - source, class : 컴파일 후에 자동으로 사라짐(거의 사용하지 않음)
  * - runtime : 프로그램 종료시까지 유지(default) */
 @Target(METHOD)
-/* Targer(구분자)
+/* Target(구분자)
  * - TYPE : 클래스 구분자
  * - METHOD : 메소드 구분자
  * - CONSTRUCTOR : 생성자 구분자

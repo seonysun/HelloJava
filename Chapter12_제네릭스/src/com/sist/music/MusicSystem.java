@@ -74,11 +74,5 @@ public class MusicSystem {
 	   }
 	   return mList;
 	   }
-	//노래 검색
-	//상세보기; mno
-	public static void main(String[] args) {
-		MusicSystem m=new MusicSystem();
-
-	}
 	
 }
