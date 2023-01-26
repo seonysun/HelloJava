@@ -1,12 +1,5 @@
 import java.io.*;
 import java.util.*;
-//빅데이터를 저장할때 => 분석, 마이닝 => 아파치로그
-/*
- * 키워드
- * 	- Serializable : 직렬화 -> Object 자체 저장
- * 	- transient : 직렬화에서 제외
- * 	- synchronized : 동기화
- */
 
 class Student implements Serializable{
 	private int hakbun;
@@ -74,6 +67,7 @@ class School{
 		} catch(Exception e) {}
 	}
 	*/
+	
 	//메뉴
 	public int menu() {
 		Scanner scan=new Scanner(System.in);
@@ -133,6 +127,7 @@ class School{
 			System.out.println("저장 완료.");
 		} catch(Exception e) {}
 	}
+	//실행프로그램
 	public void process() {
 		while(true) {
 			int m=menu();
@@ -204,7 +199,7 @@ class School{
 		}
 	}
 }
-public class ObjectOutput {
+public class ObjectStream_2 {
 	public static void main(String[] args) {
 		School s=new School();
 		s.process();

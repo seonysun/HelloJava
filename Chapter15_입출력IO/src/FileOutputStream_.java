@@ -6,9 +6,6 @@ public class FileOutputStream_ {
 	public static void main(String[] args) {
 		try {
 			FileOutputStream fos=new FileOutputStream("c:\\java_data\\sawon.txt",true);
-														//a(append) : 기존의 파일에 추가
-			//FileOutputStream fos=new FileOutputStream("c:\\java_data\\sawon.txt");
-														//w(create) : 파일 새롭게 생성
 			Scanner scan=new Scanner(System.in);
 			Sawon sa=new Sawon();
 			System.out.print("사번 입력:");

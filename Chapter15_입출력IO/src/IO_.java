@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
  * 0. IO : Input/Output 입출력
  * 
  * 1. 스트림(Stream) : 데이터 이동 통로
- * 	- 특징
  * 		- 단방향 -> 입출력 위해서는 stream 2개 필요(Input / Output)
  * 		- FIFO 구조 : 선입선출(먼저 보낸 데이터 먼저 받음)
  * 			-> 순서가 있는 일련의 데이터
@@ -24,20 +23,33 @@ import java.text.SimpleDateFormat;
  * 		- 바이트기반 스트림 : 1byte씩 송수신
  * 			- InputStream / OutputStream
  * 			- 다운로드, 업로드
- * 		- 문자기반 스트림 : 2byte씩 송수신
+ * 			- byte[] : buffer
+ * 		- 문자기반 스트림 : 2byte씩 송수신, 인코딩
  * 			- Reader / Writer
  * 			- 한글 파일 처리(한글자당 2byte)
+ * 			- char[]
  * 		- 보조 스트림 : 읽고 쓰는 속도를 빠르게 하기 위해 미리 메모리에 올려놓고 시작
  * 			- BufferedInputStream / BufferedOutputStream
  * 			- 독립적으로 사용 불가, 주 스트림에 속도 보완 위해 사용
+ * 			- buffer : byte 배열, 배열로 여러 바이트 한번에 입출력
+ * 				- 입력 : 입력소스로부터 버퍼 크기의 데이터 버퍼(스트림)에 저장
+ * 						-> 프로그램은 버퍼에서 데이터 읽기
+ * 				- 출력 : 버퍼 크기의 데이터 버퍼(스트림)에 저장
+ * 						-> 버퍼 가득차면 출력소스에 데이터 출력
+ * 						-> 데이터양이 버퍼보다 작으면 버퍼에 데이터 남아있을 수 있으므로 close, flush 메소드 호출 필수
+ * 					- close() : flush() 호출, 스트림 인스턴스 반환
+ * 					- flush() : 버퍼에 저장된 내용 출력소스에 출력 후 버퍼 비움
  * 		- 객체기반 스트림 : 파일 객체 단위로 저장 ArrayList
  * 			- ObjectInputStream / ObjectOutputStream
+ *		- 스트림 객체 생성과 수정
+ *		  	- create : new FileOutputStream("") -> 파일을 생성
+ *      	- append : new FileOutputStream("",true) -> 기존의 파일에 데이터 추가
  * 
  * 	3) 파일(*) : File (파일, 디렉토리에 대한 정보를 지님)
  * 		- 읽기 FileInputStream / FileReader
  * 		- 쓰기 FileOutputStream / FileWriter
  * 		- 메소드
- * 			파일 목록 읽기 : File[] listFiles()
+ * 			파일 목록 읽기 : listFiles()
  * 			파일 생성 : createNewFile(), mkdir()
  * 			파일명 : getName()
  * 			경로+파일명 : getPath()
