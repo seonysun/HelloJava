@@ -17,7 +17,7 @@ public class FileCopy_ {
         	fos.close();*/
         	byte[] buffer=new byte[1024];// 클라이언트에서 서버로 파일을 전송하는 방법 
         	// TCP(1024) / UDP(512) 
-        	int i=0; // 글자번호가 아니다 (읽은 byte수)
+        	int i=0; // 읽은 byte수
         	while((i=fis.read(buffer, 0, 1024))!=-1)
         	{
         		fos.write(buffer, 0, i);// 서버로 전송 ==> 파일 업로드 

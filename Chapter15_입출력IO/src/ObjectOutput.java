@@ -1,53 +1,11 @@
 import java.io.*;
 import java.util.*;
-
+//빅데이터를 저장할때 => 분석, 마이닝 => 아파치로그
 /*
  * 키워드
  * 	- Serializable : 직렬화 -> Object 자체 저장
  * 	- transient : 직렬화에서 제외
  * 	- synchronized : 동기화
- * 
- *  자바/오라클 => 웹(80%)
- *    -------------------
- *    IO (InputStream,OuptutStream)
- *    => 입출력 
- *        = 메모리 입출력 
- *          System.in / System.out 
- *          BufferedReader 
- *        = 파일 입출력 (가장 많이 사용되는 입출력) ==> 웹 
- *          FileInputStream / FileOutputStream 
- *          FileReader / FileWriter
- *          ObjectInputStream / ObjectOutputStream 
- *          => 보조 스트림 
- *             BufferedInputStream / BufferedOutputStream 
- *             BufferdReader       / BufferedWriter
- *             *** InputStream / OutputStream  ==> 바이트 스트림 (읽기/쓰기 => 1byte) => 한글제어가 아니라 
- *                                                                   => 파일 복사 / 업로드 / 다운로드 
- *                                                                   => zip,mpg...
- *                                                                   => 그림파일 , 동영상 
- *             *** Reader / Writer  ==> 문자 스트림 (읽기/쓰기 => 2byte) => 한글 출력 / 한글 읽기 
- *                 ---------------------------------------------------------------------
- *        = 네트워크 입출력 : 네트워크 => 전송할때 1byte(OutputStream) , 받는 경우 2byte (Reader)
- *                                 => Stream(1byte) => Reader(2byte)
- *                                    InputStreamReader
- *        = 객체단위 데이터 입출력 
- *          ----------------
- *          입력 => ObjectInputStream
- *          출력 => ObjectOutputStream 
- *          직렬화 / 역직렬화 
- *          --------------
- *          직렬화 : 객체를 데이터 스트림으로 만든것
- *                      ---------- 읽기/쓰기 (메모리가 연속적으로 구성)
- *          역직렬화 : 연속적인 메모리 구조 ==> 객체 형태로 변경 
- *          ==> 객체형태를 => 배열형태로 변경 
- *          ==> 저장되는 데이터 : Serializable (interface)
- *          class Sawon implements Serializable 
- *          {
- *          }
- *          => 객체단위 저장 
- *          => readObject() 
- *          => writeObject()
- *          => close()
  */
 
 class Student implements Serializable{

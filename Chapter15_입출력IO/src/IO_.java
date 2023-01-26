@@ -3,151 +3,83 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 
 /*
- * 1. 스트림(Stream) : 데이터 이동 통로, 순서가 있는 일련의 데이터
- * - 자바의 입출력은 stream 사용 
- * Queue(FIFO 선입선출)
- * 송수신 1byte, 2byte
+ * 0. IO : Input/Output 입출력
  * 
- * 입출력
- * - 메모리 : System.in, System.out
- * stream : 사용자 전송 데이터 값 서버로 받음
- * 장점 - 데이터 저장 위치 알려줌 -> 데이터 손실 없음
- * 단점 - 단방향 -> 양방향으로 만들 때는 프로그램 2개 동시 처리(쓰레드)
- * - 라이브러리 : 
- * 바이트기반 스트림 1byte씩 송수신 -> 다운로드, 업로드
- * 문자기반 스트림 2byte씩 송수신 -> 한글 파일 처리(한 글자당 2byte)
- * 보조 스트림 : 읽고 쓰는 속도를 빠르게 하기 위해 미리 메모리에 올려놓고 시작
- * Buffered
+ * 1. 스트림(Stream) : 데이터 이동 통로
+ * 	- 특징
+ * 		- 단방향 -> 입출력 위해서는 stream 2개 필요(Input / Output)
+ * 		- FIFO 구조 : 선입선출(먼저 보낸 데이터 먼저 받음)
+ * 			-> 순서가 있는 일련의 데이터
  * 
- * 객체기반 스트림 : 파일 객체 단위로 저장 ArrayList
- * ObjectInputStream
- * ObjectOutputStream
+ * 2. 입출력
+ * 	- 컴파일 예외처리 필수
+ * 	1) 메모리(표준 입출력) : 콘솔(도스창)을 통한 데이터 입력과 데이터 출력
+ * 		- System.in : 콘솔로부터 데이터 입력
+ * 		- System.out, System.err : 콘솔로 데이터 출력
+ * 		- stream : 사용자 전송 데이터 값 주소 서버로 받음
+ * 			- 장점 : 데이터 저장 위치 알려줌 -> 데이터 손실 없음
+ * 			- 단점 : 단방향 -> 양방향으로 만들 때는 프로그램 2개 동시 처리(쓰레드)
  * 
- * - 파일 : File (파일, 디렉토리에 대한 정보를 지님)
- * 읽기 FileInputStream / FileReader
- * 쓰기 FileOutputStream / FileWriter
+ * 	2) 라이브러리
+ * 		- 바이트기반 스트림 : 1byte씩 송수신
+ * 			- InputStream / OutputStream
+ * 			- 다운로드, 업로드
+ * 		- 문자기반 스트림 : 2byte씩 송수신
+ * 			- Reader / Writer
+ * 			- 한글 파일 처리(한글자당 2byte)
+ * 		- 보조 스트림 : 읽고 쓰는 속도를 빠르게 하기 위해 미리 메모리에 올려놓고 시작
+ * 			- BufferedInputStream / BufferedOutputStream
+ * 			- 독립적으로 사용 불가, 주 스트림에 속도 보완 위해 사용
+ * 		- 객체기반 스트림 : 파일 객체 단위로 저장 ArrayList
+ * 			- ObjectInputStream / ObjectOutputStream
  * 
- * - 네트워크 :
- * 전송 OutputStream
- * 수신 BufferedReader
- * Socket -> 전송, 수신 연결
+ * 	3) 파일(*) : File (파일, 디렉토리에 대한 정보를 지님)
+ * 		- 읽기 FileInputStream / FileReader
+ * 		- 쓰기 FileOutputStream / FileWriter
+ * 		- 메소드
+ * 			파일 목록 읽기 : File[] listFiles()
+ * 			파일 생성 : createNewFile(), mkdir()
+ * 			파일명 : getName()
+ * 			경로+파일명 : getPath()
+ * 			절대경로명 : getAbsolutePath()
+ * 			조상디렉토리(파일이 속해있는 디렉토리) : getParent()
+ * 			수정날짜 l : astModified()
+ * 			디렉토리, 파일 여부 확인 : isFile(), isDirectory()
+ * 			숨김여부 : isHidden()
+ * 			쓰기전용여부 : canWrite()
+ * 			읽기전용여부 : canRead()
  * 
- * 메소드
- * read()
- * write()
- * close()
- * 컴파일 예외처리 -> 예외처리 필수
+ * 	4) 네트워크
+ * 		- 전송 OutputStream : 1byte
+ * 		- 수신 BufferedReader : 2byte로 변환
+ * 		- Socket : 전송, 수신 연결
  * 
- * 
- * * 파일 목록 읽기 File[] listFiles()
- * 파일 만들기 createNewFile(), mkdir()
- * 파일 속성
- * 파일명 getName()
- * 경로명 getParent()
- * 파일+경로명  getPath()
- * 수정날짜 lastModified()
- * 디렉토리, 파일 여부 확인 isFile(), isDirectory()
- * 숨김여부 isHidden()
- * 쓰기전용여부 canWrite()
- * 읽기전용여부 canRead()
- * getAbsolutePath()
- * 
- * 
- * 
- * ... 1. 스트림 : 데이터 이동 통로 
- *              Queue (FIFO) 
- *              => 송수신 : 1byte / 2byte (~Reader,~Writer) => 한글 
- *                        -----   ------
- *                          |    
- *                        ~InputStream  ==> read()
- *                        ~OutputStream ==> write() => close()
- *              => txt (Reader/Writer) 
- *              -------------------------------------------------
- *              => XML(DoucmentBilder) , HTML(Jsoup) 
- *              => JSON(Simple-Json)
- *              => Ajax , VueJS (JSON) , React(XML,JSON)
- *              -------------------------------------------------
- *              File을 중심으로 => 다운로드 / 업로드 , 추천 => 카페,블로그 
- *              -------------------------------------------------
- *              1) File 
- *              2) FileInputStream / FileOutputStream 
- *              3) FileReader / FileWriter
- *              4) BufferedReader => 웹 데이터를 읽어 올때 
- *              5) ObjectInputStream / ObjectOutputStream (객체 단위로 저장)
- *                 => 역직렬화 , 직렬화 
- *              -------------------------------------------------------- 
- *              
- *              868page 
- *              --------
- *              입출력 (입력(Input),출력(Output))
- *              -----
- *               메모리 
- *                = 표준 입출력 
- *                  System.in , System.out 
- *                        ----         ----
- *                        InputStream   OutputStream 
- *                  Stream : 데이터를 이동하는 통로 
- *                  클라이언트 전송 =====> 서버에 값을 받는다 
- *                  --------------------------------
- *                     보내는 것이 아니라 => 저장된 위치를 알려준다 (그 위치로부터 값을 읽어 온다)
- *                     => 데이터를 잃어버리지 않는다 (데이터 손실이 없다)
- *                     => 스트림의 단점 : 단방향 (양방향 => 쓰레드)  
- *                     => 빨대 
- *                     => FIFO(Queue) 
- *               라이브러리 
- *               -------
- *                  |
- *                  = 바이트기반 스트림 (1byte씩 송수신) => 다운로드/업로드
- *                  = 문자기반 스트림 (2byte 송수신) => 한글 파일을 읽어 올때 
- *                                                *** 한글은 1글자당 2byte이다 (UTF-8)
- *                                                *** 이클립스 : EUC-KR => 운영체제
- *                                                    -------------------------
- *                                                    AWS 리눅스 => 통일 (UTF-8) 
- *                                                    ==> 클래스명,메소드명,변수명 , 테이블명, 파일명 => 통일
- *                  = 보조 스트림 => 읽는 속도 , 쓰는 속도를 빨리하기 위해서 미리 메모리에 올려놓고 시작 
- *                    Buffered=> InputStream / OutputStream 
- *                    =>         Reader / Writer   
- *                  = 객체기반 스트림 : 파일 저장 => 객체단위 저장 (ArrayList)
- *                    ObjectInputStream / ObjectOutputStream
- *                    --------------------------------------
- *               파일 
- *                 = File  (파일 , 디렉토리) => 정보 
- *                 = 파일 읽기 : FileInputStream /  FileReader
- *                 = 파일 쓰기 : FileOutputStream / FileWriter
- *                 ------------------------------------------
- *               네트워크 
- *                -----------------------------------------------
- *                 = 전송 : OutputStream ======> 1byte
- *                 = 수신 : BufferedReader ====> 2byte로 변환 
- *                ----------------------------------------------- Socket
- *                
- *                메소드 : read() , write() , close()
- *                       read() : 한글자 읽기 
- *                       read(byte[],int,int) => 데이터를 모아서 읽기 
- *                       
- *                        write() : 한글자 저장 
- *                        write(byte[],int ,int)
- *                ---> 컴파일 에외처리 ==> 반드시 예외처리 한다 
+ * 	5) 메소드
+ * 		- read()
+ * 		- write() : 한글자 저장
+ * 		- close()
  * */
 
 public class IO_ {
 	public static void main(String[] args) {
 		try {
-			File dir=new File("c:\\javadev"); //디렉토리 가져옴
-			File[] files=dir.listFiles(); //디렉토리의 파일목록 가져옴
+			//디렉토리(폴더) 가져오기
+			File dir=new File("c:\\javadev");
+			//디렉토리의 전체 파일목록 가져옴
+			File[] files=dir.listFiles(); 
+				//File 클래스로 디렉토리, 파일 모두 관리 가능
 			for(File f:files) {
-				if(f.isDirectory()) //디렉토리(폴더)일 경우
+				if(f.isDirectory()) //디렉토리만 골라서 반환
 					System.out.println("<DIR>"+f.getName());
 				else System.out.println(f.getName());
 			}
 			System.out.println();
 			
 			File dir2=new File("c:\\java_data");
-						//File 클래스로 디렉토리, 파일 모두 관리 가능
-			if(!dir2.exists())
+			if(!dir2.exists()) //디렉토리가 없는 경우 생성
 				dir2.mkdir();
 			File file=new File("c:\\java_data\\sawon.txt");
-			if(!file.exists())
+			if(!file.exists()) //파일이 없는 경우 생성
 				file.createNewFile();
 			
 			System.out.println("파일명:"+file.getName());
